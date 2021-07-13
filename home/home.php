@@ -79,6 +79,7 @@ class Phantom_Site_Plugin_Home {
         <meta name="description" content="<?php echo esc_html( $content['description'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
+        <link rel="icon" type="image/png" href="home/images/p4m-logo.png">
 
         <!-- mobile specific metas
         ================================================== -->
