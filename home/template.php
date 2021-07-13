@@ -1081,3 +1081,4 @@ Copyright ©<script>document.write(new Date().getFullYear());</script> All right
 <script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/jquery-3.2.1.min.js"></script>
 <script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/plugins.js"></script>
 <script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/main.js"></script>
+<?php exit; ?>
