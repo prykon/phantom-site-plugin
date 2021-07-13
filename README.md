@@ -1,1 +1,1 @@
-# phantom-site-plugin
+# Phantom Site Plugin <img src="https://github.com/prykon/phantom-site-plugin/raw/master/assets/phantom.png" align="right" width="80">
