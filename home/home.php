@@ -26,7 +26,12 @@ class Phantom_Site_Plugin_Home {
 	  */
 	  public function __construct() {
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
-	  	add_action( 'template_redirect', [ $this, '_body' ], 20 );
+	  	
+        if ( $_POST['callback_phone'] ) {
+        	add_action( 'template_redirect', [ $this, '_body_thanks'], 20 );
+        } else {
+	  		add_action( 'template_redirect', [ $this, '_body' ], 20 );
+        }
 
 	  	// load page elements
 	  	add_action( 'wp_print_scripts', [ $this, '_print_scripts' ], 100 );
@@ -137,6 +142,28 @@ class Phantom_Site_Plugin_Home {
 
 	  public function _body() {
 	  	require_once( 'template.php' );
+	  	exit;
+	  }
+
+	  public function _body_thanks() {
+	  	require_once( 'template-thanks.php' );
+	  	exit;
+	  }
+
+	  private function validate_phone( int $phone ) {
+	  	$phone = esc_sql( trim( $phone ) );
+	  	$phantom_workers = get_option( 'phantom_workers' );
+	  	if ( ! empty( $phantom_workers ) && in_array( $phone, $phantom_workers ) ) {
+	  		self::show_magic_link();
+	  	} else {
+	  		self::_head();
+	  		self::thanks_body();
+	  	}
+	  }
+
+	  private function show_magic_link() {
+	  	?> <h1>Do stuff...</h1> <?php
+	  	exit;
 	  }
 }
 Phantom_Site_Plugin_Home::instance();

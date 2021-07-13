@@ -437,7 +437,7 @@ $content = get_option('phantom_site_content');
         </div>
     </div> <!-- end section-header -->
 
-    <div class="row section-header" data-aos="fade-up">
+    <div class="row section-header" style="margin-top:150px;" data-aos="fade-up">
         <div class="col-full">
             <h1 class="display-1 display-1--light">Follow <?php echo esc_html( $content['title'] ?? 'us' ); ?> on Social Media</h1>
             <p>
@@ -459,42 +459,26 @@ $content = get_option('phantom_site_content');
 
     <span id="contactform" name="contactform"></span>
 
-    <div class="row section-header" data-aos="fade-up">
+    <div class="row section-header" style="margin-top:150px;" data-aos="fade-up">
         <div class="col-full">
+            <h1 class="display-1 display-1--light">Get a call back</h1>
+            <h3 class="subhead">Leave us your phone number and we'll call you back!</h3>
 
-            <h1 class="display-1 display-1--light">(3) Contact Us</h1>
-
-            <form id="contact-form" action="">
-
+            <form id="contact-form" method="post">
                 <div id="section-name" class="section">
                     <label for="name" class="input-label label-name">Name *
-                    <input type="text" id="contact-name" name="name" class="input-text input-name" value="" required="required" ></label>
-                    <span id="contact-name-error" class="form-error">You're name is required.</span>
-                </div>
-
-                <div id="section-email" class="section">
-                    <label for="email" class="input-label label-email">Email *
-                        <input type="email" id="contact-email" name="email" class="input-text input-email" value="" >
-                        <input type="email" id="contact-e2" name="email2" class="input-text email" value="" required="required" >
-                    </label>
-                    <span id="contact-email-error" class="form-error">You're email is required.</span>
+                    <input type="text" id="contact-name" name="callback_name" class="input-text input-name" value=""></label>
                 </div>
 
                 <div id="section-phone" class="section">
                     <label for="phone" class="input-label">Phone *
-                    <input type="tel" id="contact-phone" name="phone" class="input-text input-phone" value="" required="required" ></label>
+                    <input type="tel" id="contact-phone" name="callback_phone" class="input-text input-phone" value="" required="required" ></label>
                     <span id="contact-phone-error" class="form-error">You're phone is required.</span>
-                </div>
-
-                <div id="section-permission" class="section">
-                    <label for="phone" class="input-label">Comment
-                        <textarea id="contact-comment" name="comment" class="input-text" value=""></textarea>
-                    </label>
                 </div>
 
                 <div class="section" id="submit-button-container">
                     <span style="color:red" class="form-submit-error"></span>
-                    <button type="button" class="submit-button ignore" id="submit-button-contact" disabled>Submit</button> <span class="loading-spinner"></span>
+                    <button type="submit" class="submit-button ignore" id="submit-button-contact">Submit</button> <span class="loading-spinner"></span>
                 </div>
 
             </form>
