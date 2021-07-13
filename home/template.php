@@ -242,7 +242,7 @@ $content = get_option('phantom_site_content');
 
         <div class="col-block stats__col ">
             <div class="stats__static"><?php echo esc_html( $content['stats_population'] ?? '0' ) ?></div>
-            <h5>Million</h5>
+            <h5>Million People</h5>
         </div>
         <div class="col-block stats__col">
             <div class="stats__count"><?php echo esc_html( $content['stats_cities'] ?? '0' ) ?></div>
@@ -268,8 +268,8 @@ $content = get_option('phantom_site_content');
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
             <h3 class="subhead">What We Care About</h3>
-            <h1 class="display-1">We know that every student history has begun with
-                discipline, study, and practice.</h1>
+            <h1 class="display-1">We know that every student's journey involves
+                study, practice, and hard work.</h1>
         </div>
     </div> <!-- end section-header -->
 
@@ -400,7 +400,7 @@ $content = get_option('phantom_site_content');
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
             <h3 class="subhead subhead--light">Join Us</h3>
-            <h1 class="display-1 display-1--light">(1) Get our email math classes</h1>
+            <h1 class="display-1 display-1--light">Sign up for our<br>Math Classes by Email</h1>
 
             <?php if( isset( $content['contact_form'] ) && ! empty( $content['contact_form'] ) ) : ?>
                 <?php echo $content['contact_form']; ?>
@@ -439,7 +439,7 @@ $content = get_option('phantom_site_content');
 
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
-            <h1 class="display-1 display-1--light">(2) Follow on social media</h1>
+            <h1 class="display-1 display-1--light">Follow <?php echo esc_html( $content['title'] ?? 'us' ); ?> on Social Media</h1>
             <p>
                 <?php if( ! empty( $content['facebook_url'] ?? '') ) : ?>
                 <button type="button" onclick="location.href = '<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>'"><i class="fab fa-facebook"></i> Facebook</button>
