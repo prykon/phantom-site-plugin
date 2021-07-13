@@ -48,7 +48,7 @@ class Phantom_Site_Plugin_Menu {
 	  		'activate_plugins',
 	  		'phantom-site',
 	  		[ $this, 'admin_page' ],
-	  		'data:image/svg+xml;base64,PHN2ZyBpZD0ic3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCwgMCwgNDAwLDQwMCI+PGcgaWQ9InN2Z2ciPjxwYXRoIGlkPSJwYXRoMCIgZD0iTTE1My44NDcgNDUuNTQzIEMgMTUyLjg2NyA0Ni41ODUsMTUyLjg1NiA0Ni42OTMsMTUyLjcxMiA1Ni4xNTUgTCAxNTIuNTY3IDY1LjcxNCAxMzIuMDY5IDY1LjcxNCBMIDExMS41NzEgNjUuNzE0IDExMC42ODMgNjYuNjU5IEMgMTEwLjE5NSA2Ny4xNzksMTA5Ljc5NiA2OC4wODQsMTA5Ljc5NiA2OC42NzEgQyAxMDkuNzk2IDY5LjI1NywxMDkuNTIwIDcwLjAxMywxMDkuMTg0IDcwLjM1MCBDIDEwOC42NzggNzAuODU1LDEwOC41NzEgNzIuNDYyLDEwOC41NzEgNzkuNTYzIEwgMTA4LjU3MSA4OC4xNjMgOTkuMDMwIDg4LjE2MyBDIDg2Ljc4NSA4OC4xNjMsODcuMzk2IDg3LjQ2NCw4Ny4zNjUgMTAxLjUzMSBMIDg3LjM0NyAxMDkuNzk2IDc3LjQxOCAxMDkuNzk2IEwgNjcuNDg5IDEwOS43OTYgNjYuNTAwIDExMC44NDkgTCA2NS41MTAgMTExLjkwMiA2NS4zODkgMTQzLjUwMiBMIDY1LjI2OSAxNzUuMTAyIDU1LjU1NSAxNzUuMTAyIEMgNDYuMTk3IDE3NS4xMDIsNDUuODEyIDE3NS4xMzQsNDUuMDYzIDE3NS45NjEgQyA0NC4yMjkgMTc2Ljg4Myw0My43OTUgMzU2LjU4NCw0NC42MjUgMzU3LjQxNSBDIDQ0LjgxMiAzNTcuNjAyLDUwLjc1NiAzNTcuODA5LDU3LjgzNSAzNTcuODc0IEMgNzEuMzcyIDM1Ny45OTksNzIuNjUzIDM1Ny44NDYsNzIuNjUzIDM1Ni4xMTMgQyA3Mi42NTMgMzU1Ljc4MSw3Mi44MzcgMzU1LjUxMCw3My4wNjEgMzU1LjUxMCBDIDczLjMyMSAzNTUuNTEwLDczLjQ2OSAzNTIuMzI3LDczLjQ2OSAzNDYuNzc4IEMgNzMuNDY5IDMzOS4xOTMsNzMuNTU0IDMzOC4wMTQsNzQuMTE1IDMzNy43OTkgQyA3NC40NzAgMzM3LjY2Myw3OC41NTcgMzM3LjUzOCw4My4xOTcgMzM3LjUyMSBDIDkyLjI5MSAzMzcuNDg5LDkzLjU2MiAzMzcuMjI1LDk0LjQ4NSAzMzUuMTc5IEMgOTQuNzA2IDMzNC42ODgsOTUuMDI4IDMzNC4yODYsOTUuMTk5IDMzNC4yODYgQyA5NS4zNzAgMzM0LjI4Niw5NS41MTAgMzMwLjI4Miw5NS41MTAgMzI1LjM4OCBDIDk1LjUxMCAzMTQuNTc0LDk0Ljg0NSAzMTUuNTEwLDEwMi41MzEgMzE1LjUxMCBMIDEwOC41NzEgMzE1LjUxMCAxMDguNTcxIDMyNC44OTggQyAxMDguNTcxIDMzMS43NzgsMTA4LjY5OSAzMzQuMjg2LDEwOS4wNDggMzM0LjI4NiBDIDEwOS4zMTAgMzM0LjI4NiwxMDkuNDAwIDMzNC40MTAsMTA5LjI0OCAzMzQuNTYyIEMgMTA4Ljg4NyAzMzQuOTIyLDExMC41OTUgMzM2LjczNSwxMTEuMjk2IDMzNi43MzUgQyAxMTEuNTkzIDMzNi43MzUsMTExLjgzNyAzMzYuOTE4LDExMS44MzcgMzM3LjE0MyBDIDExMS44MzcgMzM3LjQwMiwxMTUuMDIzIDMzNy41NTEsMTIwLjU3OSAzMzcuNTUxIEMgMTI1LjM4NyAzMzcuNTUxLDEyOS42MTIgMzM3LjY2MywxMjkuOTY3IDMzNy43OTkgQyAxMzAuNTI5IDMzOC4wMTQsMTMwLjYxMiAzMzkuMjIyLDEzMC42MTIgMzQ3LjEwOSBDIDEzMC42MTIgMzU0LjI5MSwxMzAuNzMyIDM1Ni4zMzUsMTMxLjE5MiAzNTYuOTYzIEMgMTMyLjA5OSAzNTguMjAzLDE4MC41NTQgMzU4LjIwMywxODEuNDYxIDM1Ni45NjMgQyAxODEuOTQzIDM1Ni4zMDQsMTgyLjA0MSAzNTIuODIxLDE4Mi4wNDEgMzM2LjMzMCBDIDE4Mi4wNDEgMzIxLjQ0MywxODIuMTYzIDMxNi4zNjgsMTgyLjUzMSAzMTYuMDAwIEMgMTgzLjIzNSAzMTUuMjk2LDIxNi43NjUgMzE1LjI5NiwyMTcuNDY5IDMxNi4wMDAgQyAyMTcuODM3IDMxNi4zNjgsMjE3Ljk1OSAzMjEuNDQzLDIxNy45NTkgMzM2LjMzMCBDIDIxNy45NTkgMzUyLjgxOCwyMTguMDU3IDM1Ni4zMDQsMjE4LjUzOCAzNTYuOTYzIEMgMjE5LjExOCAzNTcuNzU2LDI2Mi44NTQgMzU4LjQ4MywyNjYuNzkyIDM1Ny43NjUgQyAyNjguNTc5IDM1Ny40MzksMjY4LjY1OCAzNTYuOTYwLDI2OC41NzEgMzQ2Ljk4NiBDIDI2OC41MTEgMzQwLjA2MywyNjguNjA5IDMzOC4xODYsMjY5LjA0NCAzMzcuOTExIEMgMjY5LjM0NSAzMzcuNzIwLDI3My43NzAgMzM3LjU2MSwyNzguODc4IDMzNy41NTcgQyAyODQuNzkyIDMzNy41NTMsMjg4LjE2MyAzMzcuNDAzLDI4OC4xNjMgMzM3LjE0MyBDIDI4OC4xNjMgMzM2LjkxOCwyODguNDA3IDMzNi43MzUsMjg4LjcwNCAzMzYuNzM1IEMgMjg5LjQwNSAzMzYuNzM1LDI5MS4xMTMgMzM0LjkyMiwyOTAuNzUyIDMzNC41NjIgQyAyOTAuNjAwIDMzNC40MTAsMjkwLjY5MCAzMzQuMjg2LDI5MC45NTIgMzM0LjI4NiBDIDI5MS4zMDEgMzM0LjI4NiwyOTEuNDI5IDMzMS43NzgsMjkxLjQyOSAzMjQuODk4IEwgMjkxLjQyOSAzMTUuNTEwIDI5Ny40NjkgMzE1LjUxMCBDIDMwNS4xNTUgMzE1LjUxMCwzMDQuNDkwIDMxNC41NzQsMzA0LjQ5MCAzMjUuMzg4IEMgMzA0LjQ5MCAzMzAuMjgyLDMwNC42MzAgMzM0LjI4NiwzMDQuODAxIDMzNC4yODYgQyAzMDQuOTcyIDMzNC4yODYsMzA1LjI5NCAzMzQuNjg4LDMwNS41MTUgMzM1LjE3OSBDIDMwNi40MzggMzM3LjIyNSwzMDcuNzA5IDMzNy40ODksMzE2LjgwMyAzMzcuNTIxIEMgMzIxLjQ0MyAzMzcuNTM4LDMyNS41MzAgMzM3LjY2MywzMjUuODg1IDMzNy43OTkgQyAzMjYuNDQ2IDMzOC4wMTQsMzI2LjUzMSAzMzkuMTkzLDMyNi41MzEgMzQ2Ljc3OCBDIDMyNi41MzEgMzUyLjMyNywzMjYuNjc5IDM1NS41MTAsMzI2LjkzOSAzNTUuNTEwIEMgMzI3LjE2MyAzNTUuNTEwLDMyNy4zNDcgMzU1Ljc4MSwzMjcuMzQ3IDM1Ni4xMTMgQyAzMjcuMzQ3IDM1Ny44NDYsMzI4LjYyOCAzNTcuOTk5LDM0Mi4xNjUgMzU3Ljg3NCBDIDM0OS4yNDQgMzU3LjgwOSwzNTUuMTg4IDM1Ny42MDIsMzU1LjM3NSAzNTcuNDE1IEMgMzU2LjIwNSAzNTYuNTg0LDM1NS43NzEgMTc2Ljg4MywzNTQuOTM3IDE3NS45NjEgQyAzNTQuMTg4IDE3NS4xMzQsMzUzLjgwMyAxNzUuMTAyLDM0NC40NDUgMTc1LjEwMiBMIDMzNC43MzEgMTc1LjEwMiAzMzQuNjExIDE0My41MDIgTCAzMzQuNDkwIDExMS45MDIgMzMzLjUwMCAxMTAuODQ5IEwgMzMyLjUxMSAxMDkuNzk2IDMyMi41ODIgMTA5Ljc5NiBMIDMxMi42NTMgMTA5Ljc5NiAzMTIuNjM1IDEwMS41MzEgQyAzMTIuNjA0IDg3LjQ2NCwzMTMuMjE1IDg4LjE2MywzMDAuOTcwIDg4LjE2MyBMIDI5MS40MjkgODguMTYzIDI5MS40MjkgNzkuNTYzIEMgMjkxLjQyOSA3Mi40NjIsMjkxLjMyMiA3MC44NTUsMjkwLjgxNiA3MC4zNTAgQyAyOTAuNDgwIDcwLjAxMywyOTAuMjA0IDY5LjIzMiwyOTAuMjA0IDY4LjYxMyBDIDI5MC4yMDQgNjUuNjQ5LDI5MC43MDcgNjUuNzE0LDI2Ny44NzQgNjUuNzE0IEwgMjQ3LjQzMyA2NS43MTQgMjQ3LjI4OCA1Ni4xNTUgQyAyNDcuMTQ0IDQ2LjY5MywyNDcuMTMzIDQ2LjU4NSwyNDYuMTUzIDQ1LjU0MyBMIDI0NS4xNjQgNDQuNDkwIDIwMC4wMDAgNDQuNDkwIEwgMTU0LjgzNiA0NC40OTAgMTUzLjg0NyA0NS41NDMgTTE3OC4zNjcgMTIzLjY3MyBMIDE3OC41NzEgMTM0LjQ5MCAxODkuMjg2IDEzNC41OTkgTCAyMDAuMDAwIDEzNC43MDcgMjAwLjAwMCAxNDUuNzIxIEwgMjAwLjAwMCAxNTYuNzM1IDE3OC4zNjcgMTU2LjczNSBMIDE1Ni43MzUgMTU2LjczNSAxNTYuNzM1IDE3OC4zNjcgTCAxNTYuNzM1IDIwMC4wMDAgMTY3LjU1MSAyMDAuMDAwIEwgMTc4LjM2NyAyMDAuMDAwIDE3OC4zNjcgMjExLjAyMCBMIDE3OC4zNjcgMjIyLjA0MSAxNTYuMzMzIDIyMi4wNDEgTCAxMzQuMjk5IDIyMi4wNDEgMTM0LjE5MCAyMTEuMzI3IEwgMTM0LjA4MiAyMDAuNjEyIDEyMy40NjkgMjAwLjQwOCBMIDExMi44NTcgMjAwLjIwNCAxMTIuNzUzIDE2Ny40NTYgTCAxMTIuNjQ4IDEzNC43MDcgMTIzLjM2NSAxMzQuNTk5IEwgMTM0LjA4MiAxMzQuNDkwIDEzNC4xODUgMTI0LjA4MiBDIDEzNC4yNDMgMTE4LjM1NywxMzQuMzc1IDExMy40NDIsMTM0LjQ4MCAxMTMuMTYwIEMgMTM0LjYzMSAxMTIuNzU0LDEzOS4yMzUgMTEyLjY2OCwxNTYuNDE3IDExMi43NTIgTCAxNzguMTYzIDExMi44NTcgMTc4LjM2NyAxMjMuNjczIE0zMDguOTgwIDEyMy42NzMgTCAzMDkuMTg0IDEzNC40OTAgMzIwLjEwMiAxMzQuNTk5IEwgMzMxLjAyMCAxMzQuNzA3IDMzMS4wMjAgMTQ1LjcxNyBMIDMzMS4wMjAgMTU2LjcyOCAzMDkuMDgyIDE1Ni44MzMgTCAyODcuMTQzIDE1Ni45MzkgMjg3LjE0MyAxNzguMzY3IEwgMjg3LjE0MyAxOTkuNzk2IDI5OC4wNjEgMTk5LjkwNSBMIDMwOC45ODAgMjAwLjAxMyAzMDguOTgwIDIxMS4wMjcgTCAzMDguOTgwIDIyMi4wNDEgMjg2Ljk0NiAyMjIuMDQxIEwgMjY0LjkxMiAyMjIuMDQxIDI2NC44MDMgMjExLjMyNyBMIDI2NC42OTQgMjAwLjYxMiAyNTQuMDgyIDIwMC40MDggTCAyNDMuNDY5IDIwMC4yMDQgMjQzLjM2NSAxNjcuNDU2IEwgMjQzLjI2MCAxMzQuNzA3IDI1My45NzcgMTM0LjU5OSBMIDI2NC42OTQgMTM0LjQ5MCAyNjQuNzk4IDEyNC4wODIgQyAyNjQuODU1IDExOC4zNTcsMjY0Ljk4NyAxMTMuNDQyLDI2NS4wOTIgMTEzLjE2MCBDIDI2NS4yNDMgMTEyLjc1NCwyNjkuODQ4IDExMi42NjgsMjg3LjAyOSAxMTIuNzUyIEwgMzA4Ljc3NiAxMTIuODU3IDMwOC45ODAgMTIzLjY3MyAiIHN0cm9rZT0ibm9uZSIgZmlsbD0iIzAwMDAwMCIgZmlsbC1ydWxlPSJldmVub2RkIj48L3BhdGg+PC9nPjwvc3ZnPg==',
+	  		'data:image/svg+xml;base64,PHN2ZyBpZD0ic3ZnIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCwgMCwgNDAwLDQwMCIgZmlsbD0iI2ZmZmZmZiI+PGcgaWQ9InN2ZyI+PHBhdGggaWQ9InBhdGgwIiBkPSJNMTUzLjg0NyA0NS41NDMgQyAxNTIuODY3IDQ2LjU4NSwxNTIuODU2IDQ2LjY5MywxNTIuNzEyIDU2LjE1NSBMIDE1Mi41NjcgNjUuNzE0IDEzMi4wNjkgNjUuNzE0IEwgMTExLjU3MSA2NS43MTQgMTEwLjY4MyA2Ni42NTkgQyAxMTAuMTk1IDY3LjE3OSwxMDkuNzk2IDY4LjA4NCwxMDkuNzk2IDY4LjY3MSBDIDEwOS43OTYgNjkuMjU3LDEwOS41MjAgNzAuMDEzLDEwOS4xODQgNzAuMzUwIEMgMTA4LjY3OCA3MC44NTUsMTA4LjU3MSA3Mi40NjIsMTA4LjU3MSA3OS41NjMgTCAxMDguNTcxIDg4LjE2MyA5OS4wMzAgODguMTYzIEMgODYuNzg1IDg4LjE2Myw4Ny4zOTYgODcuNDY0LDg3LjM2NSAxMDEuNTMxIEwgODcuMzQ3IDEwOS43OTYgNzcuNDE4IDEwOS43OTYgTCA2Ny40ODkgMTA5Ljc5NiA2Ni41MDAgMTEwLjg0OSBMIDY1LjUxMCAxMTEuOTAyIDY1LjM4OSAxNDMuNTAyIEwgNjUuMjY5IDE3NS4xMDIgNTUuNTU1IDE3NS4xMDIgQyA0Ni4xOTcgMTc1LjEwMiw0NS44MTIgMTc1LjEzNCw0NS4wNjMgMTc1Ljk2MSBDIDQ0LjIyOSAxNzYuODgzLDQzLjc5NSAzNTYuNTg0LDQ0LjYyNSAzNTcuNDE1IEMgNDQuODEyIDM1Ny42MDIsNTAuNzU2IDM1Ny44MDksNTcuODM1IDM1Ny44NzQgQyA3MS4zNzIgMzU3Ljk5OSw3Mi42NTMgMzU3Ljg0Niw3Mi42NTMgMzU2LjExMyBDIDcyLjY1MyAzNTUuNzgxLDcyLjgzNyAzNTUuNTEwLDczLjA2MSAzNTUuNTEwIEMgNzMuMzIxIDM1NS41MTAsNzMuNDY5IDM1Mi4zMjcsNzMuNDY5IDM0Ni43NzggQyA3My40NjkgMzM5LjE5Myw3My41NTQgMzM4LjAxNCw3NC4xMTUgMzM3Ljc5OSBDIDc0LjQ3MCAzMzcuNjYzLDc4LjU1NyAzMzcuNTM4LDgzLjE5NyAzMzcuNTIxIEMgOTIuMjkxIDMzNy40ODksOTMuNTYyIDMzNy4yMjUsOTQuNDg1IDMzNS4xNzkgQyA5NC43MDYgMzM0LjY4OCw5NS4wMjggMzM0LjI4Niw5NS4xOTkgMzM0LjI4NiBDIDk1LjM3MCAzMzQuMjg2LDk1LjUxMCAzMzAuMjgyLDk1LjUxMCAzMjUuMzg4IEMgOTUuNTEwIDMxNC41NzQsOTQuODQ1IDMxNS41MTAsMTAyLjUzMSAzMTUuNTEwIEwgMTA4LjU3MSAzMTUuNTEwIDEwOC41NzEgMzI0Ljg5OCBDIDEwOC41NzEgMzMxLjc3OCwxMDguNjk5IDMzNC4yODYsMTA5LjA0OCAzMzQuMjg2IEMgMTA5LjMxMCAzMzQuMjg2LDEwOS40MDAgMzM0LjQxMCwxMDkuMjQ4IDMzNC41NjIgQyAxMDguODg3IDMzNC45MjIsMTEwLjU5NSAzMzYuNzM1LDExMS4yOTYgMzM2LjczNSBDIDExMS41OTMgMzM2LjczNSwxMTEuODM3IDMzNi45MTgsMTExLjgzNyAzMzcuMTQzIEMgMTExLjgzNyAzMzcuNDAyLDExNS4wMjMgMzM3LjU1MSwxMjAuNTc5IDMzNy41NTEgQyAxMjUuMzg3IDMzNy41NTEsMTI5LjYxMiAzMzcuNjYzLDEyOS45NjcgMzM3Ljc5OSBDIDEzMC41MjkgMzM4LjAxNCwxMzAuNjEyIDMzOS4yMjIsMTMwLjYxMiAzNDcuMTA5IEMgMTMwLjYxMiAzNTQuMjkxLDEzMC43MzIgMzU2LjMzNSwxMzEuMTkyIDM1Ni45NjMgQyAxMzIuMDk5IDM1OC4yMDMsMTgwLjU1NCAzNTguMjAzLDE4MS40NjEgMzU2Ljk2MyBDIDE4MS45NDMgMzU2LjMwNCwxODIuMDQxIDM1Mi44MjEsMTgyLjA0MSAzMzYuMzMwIEMgMTgyLjA0MSAzMjEuNDQzLDE4Mi4xNjMgMzE2LjM2OCwxODIuNTMxIDMxNi4wMDAgQyAxODMuMjM1IDMxNS4yOTYsMjE2Ljc2NSAzMTUuMjk2LDIxNy40NjkgMzE2LjAwMCBDIDIxNy44MzcgMzE2LjM2OCwyMTcuOTU5IDMyMS40NDMsMjE3Ljk1OSAzMzYuMzMwIEMgMjE3Ljk1OSAzNTIuODE4LDIxOC4wNTcgMzU2LjMwNCwyMTguNTM4IDM1Ni45NjMgQyAyMTkuMTE4IDM1Ny43NTYsMjYyLjg1NCAzNTguNDgzLDI2Ni43OTIgMzU3Ljc2NSBDIDI2OC41NzkgMzU3LjQzOSwyNjguNjU4IDM1Ni45NjAsMjY4LjU3MSAzNDYuOTg2IEMgMjY4LjUxMSAzNDAuMDYzLDI2OC42MDkgMzM4LjE4NiwyNjkuMDQ0IDMzNy45MTEgQyAyNjkuMzQ1IDMzNy43MjAsMjczLjc3MCAzMzcuNTYxLDI3OC44NzggMzM3LjU1NyBDIDI4NC43OTIgMzM3LjU1MywyODguMTYzIDMzNy40MDMsMjg4LjE2MyAzMzcuMTQzIEMgMjg4LjE2MyAzMzYuOTE4LDI4OC40MDcgMzM2LjczNSwyODguNzA0IDMzNi43MzUgQyAyODkuNDA1IDMzNi43MzUsMjkxLjExMyAzMzQuOTIyLDI5MC43NTIgMzM0LjU2MiBDIDI5MC42MDAgMzM0LjQxMCwyOTAuNjkwIDMzNC4yODYsMjkwLjk1MiAzMzQuMjg2IEMgMjkxLjMwMSAzMzQuMjg2LDI5MS40MjkgMzMxLjc3OCwyOTEuNDI5IDMyNC44OTggTCAyOTEuNDI5IDMxNS41MTAgMjk3LjQ2OSAzMTUuNTEwIEMgMzA1LjE1NSAzMTUuNTEwLDMwNC40OTAgMzE0LjU3NCwzMDQuNDkwIDMyNS4zODggQyAzMDQuNDkwIDMzMC4yODIsMzA0LjYzMCAzMzQuMjg2LDMwNC44MDEgMzM0LjI4NiBDIDMwNC45NzIgMzM0LjI4NiwzMDUuMjk0IDMzNC42ODgsMzA1LjUxNSAzMzUuMTc5IEMgMzA2LjQzOCAzMzcuMjI1LDMwNy43MDkgMzM3LjQ4OSwzMTYuODAzIDMzNy41MjEgQyAzMjEuNDQzIDMzNy41MzgsMzI1LjUzMCAzMzcuNjYzLDMyNS44ODUgMzM3Ljc5OSBDIDMyNi40NDYgMzM4LjAxNCwzMjYuNTMxIDMzOS4xOTMsMzI2LjUzMSAzNDYuNzc4IEMgMzI2LjUzMSAzNTIuMzI3LDMyNi42NzkgMzU1LjUxMCwzMjYuOTM5IDM1NS41MTAgQyAzMjcuMTYzIDM1NS41MTAsMzI3LjM0NyAzNTUuNzgxLDMyNy4zNDcgMzU2LjExMyBDIDMyNy4zNDcgMzU3Ljg0NiwzMjguNjI4IDM1Ny45OTksMzQyLjE2NSAzNTcuODc0IEMgMzQ5LjI0NCAzNTcuODA5LDM1NS4xODggMzU3LjYwMiwzNTUuMzc1IDM1Ny40MTUgQyAzNTYuMjA1IDM1Ni41ODQsMzU1Ljc3MSAxNzYuODgzLDM1NC45MzcgMTc1Ljk2MSBDIDM1NC4xODggMTc1LjEzNCwzNTMuODAzIDE3NS4xMDIsMzQ0LjQ0NSAxNzUuMTAyIEwgMzM0LjczMSAxNzUuMTAyIDMzNC42MTEgMTQzLjUwMiBMIDMzNC40OTAgMTExLjkwMiAzMzMuNTAwIDExMC44NDkgTCAzMzIuNTExIDEwOS43OTYgMzIyLjU4MiAxMDkuNzk2IEwgMzEyLjY1MyAxMDkuNzk2IDMxMi42MzUgMTAxLjUzMSBDIDMxMi42MDQgODcuNDY0LDMxMy4yMTUgODguMTYzLDMwMC45NzAgODguMTYzIEwgMjkxLjQyOSA4OC4xNjMgMjkxLjQyOSA3OS41NjMgQyAyOTEuNDI5IDcyLjQ2MiwyOTEuMzIyIDcwLjg1NSwyOTAuODE2IDcwLjM1MCBDIDI5MC40ODAgNzAuMDEzLDI5MC4yMDQgNjkuMjMyLDI5MC4yMDQgNjguNjEzIEMgMjkwLjIwNCA2NS42NDksMjkwLjcwNyA2NS43MTQsMjY3Ljg3NCA2NS43MTQgTCAyNDcuNDMzIDY1LjcxNCAyNDcuMjg4IDU2LjE1NSBDIDI0Ny4xNDQgNDYuNjkzLDI0Ny4xMzMgNDYuNTg1LDI0Ni4xNTMgNDUuNTQzIEwgMjQ1LjE2NCA0NC40OTAgMjAwLjAwMCA0NC40OTAgTCAxNTQuODM2IDQ0LjQ5MCAxNTMuODQ3IDQ1LjU0MyBNMTc4LjM2NyAxMjMuNjczIEwgMTc4LjU3MSAxMzQuNDkwIDE4OS4yODYgMTM0LjU5OSBMIDIwMC4wMDAgMTM0LjcwNyAyMDAuMDAwIDE0NS43MjEgTCAyMDAuMDAwIDE1Ni43MzUgMTc4LjM2NyAxNTYuNzM1IEwgMTU2LjczNSAxNTYuNzM1IDE1Ni43MzUgMTc4LjM2NyBMIDE1Ni43MzUgMjAwLjAwMCAxNjcuNTUxIDIwMC4wMDAgTCAxNzguMzY3IDIwMC4wMDAgMTc4LjM2NyAyMTEuMDIwIEwgMTc4LjM2NyAyMjIuMDQxIDE1Ni4zMzMgMjIyLjA0MSBMIDEzNC4yOTkgMjIyLjA0MSAxMzQuMTkwIDIxMS4zMjcgTCAxMzQuMDgyIDIwMC42MTIgMTIzLjQ2OSAyMDAuNDA4IEwgMTEyLjg1NyAyMDAuMjA0IDExMi43NTMgMTY3LjQ1NiBMIDExMi42NDggMTM0LjcwNyAxMjMuMzY1IDEzNC41OTkgTCAxMzQuMDgyIDEzNC40OTAgMTM0LjE4NSAxMjQuMDgyIEMgMTM0LjI0MyAxMTguMzU3LDEzNC4zNzUgMTEzLjQ0MiwxMzQuNDgwIDExMy4xNjAgQyAxMzQuNjMxIDExMi43NTQsMTM5LjIzNSAxMTIuNjY4LDE1Ni40MTcgMTEyLjc1MiBMIDE3OC4xNjMgMTEyLjg1NyAxNzguMzY3IDEyMy42NzMgTTMwOC45ODAgMTIzLjY3MyBMIDMwOS4xODQgMTM0LjQ5MCAzMjAuMTAyIDEzNC41OTkgTCAzMzEuMDIwIDEzNC43MDcgMzMxLjAyMCAxNDUuNzE3IEwgMzMxLjAyMCAxNTYuNzI4IDMwOS4wODIgMTU2LjgzMyBMIDI4Ny4xNDMgMTU2LjkzOSAyODcuMTQzIDE3OC4zNjcgTCAyODcuMTQzIDE5OS43OTYgMjk4LjA2MSAxOTkuOTA1IEwgMzA4Ljk4MCAyMDAuMDEzIDMwOC45ODAgMjExLjAyNyBMIDMwOC45ODAgMjIyLjA0MSAyODYuOTQ2IDIyMi4wNDEgTCAyNjQuOTEyIDIyMi4wNDEgMjY0LjgwMyAyMTEuMzI3IEwgMjY0LjY5NCAyMDAuNjEyIDI1NC4wODIgMjAwLjQwOCBMIDI0My40NjkgMjAwLjIwNCAyNDMuMzY1IDE2Ny40NTYgTCAyNDMuMjYwIDEzNC43MDcgMjUzLjk3NyAxMzQuNTk5IEwgMjY0LjY5NCAxMzQuNDkwIDI2NC43OTggMTI0LjA4MiBDIDI2NC44NTUgMTE4LjM1NywyNjQuOTg3IDExMy40NDIsMjY1LjA5MiAxMTMuMTYwIEMgMjY1LjI0MyAxMTIuNzU0LDI2OS44NDggMTEyLjY2OCwyODcuMDI5IDExMi43NTIgTCAzMDguNzc2IDExMi44NTcgMzA4Ljk4MCAxMjMuNjczICIgc3Ryb2tlPSJub25lIj48L3BhdGg+PC9nPjwvc3ZnPg==',
 	  		2
 	  	);
 	}
@@ -64,47 +64,192 @@ class Phantom_Site_Plugin_Menu {
 
 	  public function admin_page() {
 	  	$slug = 'phantom-site';
+	  	$content = get_option('phantom_site_content', [] );
+
+	  	if ( isset( $_POST['phantom_site_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['phantom_site_nonce'] ) ), 'phantom_site' . get_current_user_id() ) ) {
+
+            if ( isset( $_POST['title'] ) )  {
+                $content['title'] = sanitize_text_field( wp_unslash( $_POST['title'] ) );
+            }
+            if ( isset( $_POST['description'] ) )  {
+                $content['description'] = sanitize_text_field( wp_unslash( $_POST['description'] ) );
+            }
+            if ( isset( $_POST['location'] ) )  {
+                $content['location'] = sanitize_text_field( wp_unslash( $_POST['location'] ) );
+            }
+            if ( isset( $_POST['logo_url'] ) )  {
+                $content['logo_url'] = sanitize_text_field( wp_unslash( $_POST['logo_url'] ) );
+            }
+            if ( isset( $_POST['background_image_url'] ) )  {
+                $content['background_image_url'] = sanitize_text_field( wp_unslash( $_POST['background_image_url'] ) );
+            }
+            if ( isset( $_POST['facebook_url'] ) )  {
+                $content['facebook_url'] = sanitize_text_field( wp_unslash( $_POST['facebook_url'] ) );
+            }
+            if ( isset( $_POST['facebook_events_url'] ) )  {
+                $content['facebook_events_url'] = sanitize_text_field( wp_unslash( $_POST['facebook_events_url'] ) );
+            }
+            if ( isset( $_POST['instagram_url'] ) )  {
+                $content['instagram_url'] = sanitize_text_field( wp_unslash( $_POST['instagram_url'] ) );
+            }
+            if ( isset( $_POST['twitter_url'] ) )  {
+                $content['twitter_url'] = sanitize_text_field( wp_unslash( $_POST['twitter_url'] ) );
+            }
+            
+            if ( isset( $_POST['stats_population'] ) )  {
+                $content['stats_population'] = sanitize_text_field( wp_unslash( $_POST['stats_population'] ) );
+            }
+            if ( isset( $_POST['stats_cities'] ) )  {
+                $content['stats_cities'] = sanitize_text_field( wp_unslash( $_POST['stats_cities'] ) );
+            }
+            if ( isset( $_POST['stats_trainings'] ) )  {
+                $content['stats_trainings'] = sanitize_text_field( wp_unslash( $_POST['stats_trainings'] ) );
+            }
+            if ( isset( $_POST['stats_churches'] ) )  {
+                $content['stats_churches'] = sanitize_text_field( wp_unslash( $_POST['stats_churches'] ) );
+            } else {
+            	wp_die( esc_attr__( 'Nonce not verified' ) );
+            }
+            
+
+            update_option( 'phantom_site_content', $content, true );
+            $content = get_option('phantom_site_content');
+        }
 
         if ( ! current_user_can( 'activate_plugins' ) ) {
             wp_die( esc_attr__( 'You do not have sufficient permissions to access this page.' ) );
         }
         ?>
+        <style>.cell-title{width: 150px;}</style>
         <div class="wrap">
             <h2>Phantom Site Settings</h2>
             <form method="post">
-            	<table class="form-table" role="presentation">
-	            	<tr>
-	            		<th scope="row">
-	            			<label for="default_role">Site Type</label>
-	            		</th>
-	            		<td>
-	            			<fieldset>
-	            				<label><input type="radio" name="site_type" id="math_class_site" value='math_class' checked="checked"/> <img src="<?php echo esc_url( self::get_plugin_base_url() ); ?>/home/images/logo.png" class="avatar avatar-32 photo" height="32" width="32" loading="lazy"/> Math Class (default)</label><br />
-	            			</fieldset>
-	            		</td>
-	            	</tr>
-	            	<tr>
-	            		<th scope="row">
-	            			<label>Under Construction Mode</label>
-	            		</th>
-	            		<td>								
-							<div class="row-actions visible">
-								<span class="activate">
-									<a href="#" id="activate-under-construction-mode" class="edit" aria-label="Activate Under Construction Mode">Activate</a>
-								</span>
-							</div>
-	            		</td>
-	            	</tr>
-	            	<tr>
-	            		<td>
-		            		<input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"  />
-	            		</td>
-	            	</tr>
-	            </table>
+            	<div id="poststuff">
+            		<div id="post-body" class="metabox-holder columns-2">
+            			<div id="post-body-content">
+            				<?php wp_nonce_field('phantom_site' . get_current_user_id(), 'phantom_site_nonce'); ?>
+            				<table class="widefat striped">
+            					<thead>
+            						<tr>
+            							<th colspan="2">Phantom Site Configuration</th>
+            						</tr>
+            					</thead>
+            					<tbody>
+            						<tr>
+            							<td class="cell-title">Title</td>
+            							<td><input type="text" name="title" class="regular-text" value="<?php echo esc_html( $content['title'] ?? '' ); ?>" /></td>
+            						</tr>
+            						<tr>
+            							<td class="cell-title">Description</td>
+            							<td><input type="text" name="description" class="regular-text" value="<?php echo esc_html( $content['description'] ?? '' ); ?>" /></td>
+            						</tr>
+            						<tr>
+            							<td class="cell-title">Logo</td>
+            							<td><input type="text" name="logo_url" class="regular-text" value="<?php echo esc_html( $content['logo_url'] ?? '' ); ?>" /></td>
+            						</tr>
+            						<tr>
+            							<td class="cell-title">Background Image URL</td>
+            							<td class="cell-title"><input type="text" name="background_image_url" class="regular-text" value="<?php echo esc_html( $content['background_image_url'] ?? '' ); ?>" /></td>
+            						</tr>
+            						<tr>
+            							<td class="cell-title">Facebook URL</td>
+            							<td><input type="text" name="facebook_url" class="regular-text" value="<?php echo esc_html( $content['facebook_url'] ?? '' ); ?>" /></td>
+            						</tr>
+            						<tr>
+	                                    <td class="cell-title">Facebook Events URL</td>
+	                                    <td><input type="text" name="facebook_events_url" class="regular-text" value="<?php echo $content['facebook_events_url'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+	                                    <td class="cell-title">Instagram URL</td>
+	                                    <td><input type="text" name="instagram_url" class="regular-text" value="<?php echo $content['instagram_url'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+	                                    <td class="cell-title">Twitter URL</td>
+	                                    <td><input type="text" name="twitter_url" class="regular-text" value="<?php echo $content['twitter_url'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+                                    <td colspan="2">
+                                        <button type="submit" class="button">Update</button>
+                                    </td>
+                                </tr>
+	                            </tbody>
+	                        </table>
+	                        <br>
+							<table class="widefat striped">
+	        					<thead>
+	        						<tr>
+	        							<th colspan="2">Location Configuration</th>
+	        						</tr>
+	        					</thead>
+	        					<tbody>
+	        						<tr>
+            							<td class="cell-title">Location Name</td>
+            							<td><input type="text" name="location" class="regular-text" value="<?php echo esc_html( $content['location'] ?? '' ); ?>" /></td>
+            						</tr>
+	                                <tr>
+	                                    <td class="cell-title">Population</td>
+	                                    <td><input type="text" name="stats_population" class="regular-text" value="<?php echo $content['stats_population'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+	                                    <td class="cell-title">Cities</td>
+	                                    <td><input type="text" name="stats_cities" class="regular-text" value="<?php echo $content['stats_cities'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+	                                    <td class="cell-title">Trainings Needed</td>
+	                                    <td><input type="text" name="stats_trainings" class="regular-text" value="<?php echo $content['stats_trainings'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+	                                    <td class="cell-title">New Churches Needed</td>
+	                                    <td><input type="text" name="stats_churches" class="regular-text" value="<?php echo $content['stats_churches'] ?? '' ?>" /></td>
+	                                </tr>
+	                                <tr>
+                                    	<td colspan="2">
+                                        	<button type="submit" class="button">Update</button>
+                                    	</td>
+                                	</tr>
+            					</tbody>
+            				</table>
+            				<br>
+            				<table class="widefat striped">
+            					<thead>
+            						<tr>
+            							<th colspan="2">Phantom Site Settings</th>
+            						</tr>
+            					</thead>
+            					<tbody>
+            						<tr>
+					            		<th>
+					            			<label for="default_role">Site Type</label>
+					            		</th>
+					            		<td>
+					            			<select name="site_type">
+					            				<option value="math_class" selected>Math Class (default)</option>
+					            			</select>
+					            		</td>
+					            	</tr>
+					            	<tr>
+					            		<th>
+					            			<label>Under Construction Mode</label>
+					            		</th>
+					            		<td>								
+											<span class="activate">
+												<a href="#" id="activate-under-construction-mode" class="edit" aria-label="Activate Under Construction Mode">Activate</a>
+											</span>
+					            		</td>
+					            	</tr>
+					            	<tr>
+                                    	<td colspan="2">
+                                        	<button type="submit" class="button">Update</button>
+                                    	</td>
+                                	</tr>
+            					</tbody>
+            				</table>
+            			</div>
+            		</div>
+            	</div>
             </form>
         </div><!-- End wrap -->
         <?php
 	}
 }
-
 Phantom_Site_Plugin_Menu::instance();

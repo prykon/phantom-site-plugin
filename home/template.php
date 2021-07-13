@@ -1,7 +1,5 @@
 <?php
-
-$content = get_option('phantom_landing_content');
-
+$content = get_option('phantom_site_content');
 ?>
 <script>
     document.body.id = 'top'
