@@ -1,0 +1,27 @@
+{
+  "name": "Phantom Site Plugin",
+  "version": "0.1.0",
+  "last_updated": "2021-07",
+  "author": "prykon",
+  "author_homepage": "https://gitub.com/prykon",
+  "git_owner": "prykon",
+  "git_repo": "phantom-site-plugin",
+  "download_url": "https://github.com/prykon/phantom-site-plugin/releases/latest/download/phantom-site-plugin.zip",
+  "homepage": "https://github.com/prykon/phantom-site-plugin",
+  "issues_url": "https://github.com/prykon/phantom-site-plugin/issues",
+  "projects_url": "https://github.com/prykon/phantom-site-plugin/projects/1",
+  "discussions_url": "https://github.com/prykon/phantom-site-plugin/discussions",
+  "wiki_url": "https://github.com/prykon/phantom-site-plugin/wiki",
+  "license_url": "https://raw.githubusercontent.com/prykon/phantom-site-plugin/master/LICENSE",
+  "readme_url": "https://raw.githubusercontent.com/prykon/phantom-site-plugin/master/README.md",
+  "upgrade_notice": "Upgrade to get the latest features.",
+  "banners": {
+    "low": "https://raw.githubusercontent.com/prykon/phantom-site-plugin/master/documentation/banner.png",
+    "high": "https://raw.githubusercontent.com/prykon/phantom-site-plugin/master/documentation/banner.png"
+  },
+  "sections": {
+    "description": "Send DT Magic Links to users discretely through a Phantom Site.",
+    "installation": "(Required) For security purposes, you must NOT have Disciple.Tools Theme installed in the same instance of a Phantom Site.",
+    "changelog": ""
+  }
+}
