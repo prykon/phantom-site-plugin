@@ -25,10 +25,6 @@ class Phantom_Site_Plugin_Home {
 	  * @since 0.1.0
 	  */
 	  public function __construct() {
-	  	// if ( ! is_admin() ) {
-	  	// 	return;
-	  	// }
-
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
 	  	add_action( 'template_redirect', [ $this, '_body' ], 20 );
 
@@ -68,11 +64,13 @@ class Phantom_Site_Plugin_Home {
 	  }
 
 	  public function _head(){
+	  	$content = get_option('phantom_site_content');
         ?>
         <!--- basic page needs
         ================================================== -->
         <meta charset="utf-8" foo="bar">
         <title><?php echo esc_html( $content['title'] ?? '' ) ?></title>
+        <meta name="robots" content="noindex, nofollow">
         <meta name="description" content="<?php echo esc_html( $content['description'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
