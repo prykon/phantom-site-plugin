@@ -63,8 +63,27 @@ class Phantom_Site_Plugin_Menu {
     }
 
 	  public function admin_page() {
-	  	$slug = 'phantom-site';
-	  	$content = get_option('phantom_site_content', [] );
+	  	if ( isset( $_GET["tab"] ) ) {
+            $tab = sanitize_key( wp_unslash( $_GET["tab"] ) );
+        } else {
+            $tab = 'settings';
+        }
+
+	  	switch ($tab) {
+                case 'settings':
+                    $this->settings();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+      private function settings() {
+      	$content = get_option('phantom_site_content', [] );
+
+        if ( ! $content ){
+            $content = [];
+        }
 
 	  	if ( isset( $_POST['phantom_site_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['phantom_site_nonce'] ) ), 'phantom_site' . get_current_user_id() ) ) {
 
@@ -111,10 +130,9 @@ class Phantom_Site_Plugin_Menu {
             	wp_die( esc_attr__( 'Nonce not verified' ) );
             }
             
-
             update_option( 'phantom_site_content', $content, true );
             $content = get_option('phantom_site_content');
-        }
+        }	  	
 
         if ( ! current_user_can( 'activate_plugins' ) ) {
             wp_die( esc_attr__( 'You do not have sufficient permissions to access this page.' ) );
@@ -123,6 +141,11 @@ class Phantom_Site_Plugin_Menu {
         <style>.cell-title{width: 150px;}</style>
         <div class="wrap">
             <h2>Phantom Site Settings</h2>
+            <h2 class="nav-tab-wrapper">
+                <a href="<?php echo esc_attr( $link ) . 'admin.php?page=phantom-site&tab=settings' ?>"
+                   class="nav-tab <?php echo esc_html( ( $tab == 'settings' || ! isset( $tab ) ) ? 'nav-tab-active' : '' ); ?>">Settings
+                </a>
+            </h2>
             <form method="post">
             	<div id="poststuff">
             		<div id="post-body" class="metabox-holder columns-2">
