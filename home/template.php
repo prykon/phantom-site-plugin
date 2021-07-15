@@ -158,7 +158,7 @@ $content = get_option('phantom_site_content');
     <div class="row section-header" data-aos="fade-up">
         <div class="col-full">
             <h3 class="subhead">Who We Are</h3>
-            <h1 class="display-1">#<?php echo esc_html( $content['title'] ?? '' ) ?> brings quality level education to anyone in <?php echo esc_html( $content['location'] ?? 'the World' ) ?> for free.</h1>
+            <h1 class="display-1">#<?php echo esc_html( $content['title'] . ' brings' ?? 'We bring' ) ?> quality level education to anyone in <?php echo esc_html( $content['location'] ?? 'the World' ) ?>. For free.</h1>
         </div>
     </div> <!-- end section-header -->
 

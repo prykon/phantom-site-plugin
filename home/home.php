@@ -25,6 +25,9 @@ class Phantom_Site_Plugin_Home {
 	  * @since 0.1.0
 	  */
 	  public function __construct() {
+	  	if ( is_admin() ) {
+	  		return;
+	  	}
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
 	  	
         if ( $_POST['callback_phone'] ) {
@@ -79,7 +82,6 @@ class Phantom_Site_Plugin_Home {
         <meta name="description" content="<?php echo esc_html( $content['description'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
-        <link rel="icon" type="image/png" href="home/images/p4m-logo.png">
 
         <!-- mobile specific metas
         ================================================== -->
