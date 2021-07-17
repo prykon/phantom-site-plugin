@@ -79,7 +79,7 @@ class Phantom_Site_Plugin_Home {
         ?>
         <!--- basic page needs
         ================================================== -->
-        <meta charset="utf-8" foo="bar">
+        <meta charset="utf-8">
         <title><?php echo esc_html( $content['title'] ?? '' ) ?></title>
         <meta name="robots" content="noindex, nofollow">
         <meta name="description" content="<?php echo esc_html( $content['description'] ?? '' ) ?>">
