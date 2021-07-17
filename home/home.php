@@ -30,8 +30,12 @@ class Phantom_Site_Plugin_Home {
         }
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
 
-        if ( $_POST['callback_phone'] ) {
-            add_action( 'template_redirect', [ $this, '_body_thanks' ], 20 );
+        if ( isset( $_POST['callback_phone'] ) && isset( $_POST['phantom_site_phone_nonce'] ) ) {
+            if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['phantom_site_phone_nonce'] ) ), 'phantom_site_callback_phone' ) ) {
+                add_action( 'template_redirect', [ $this, '_body_thanks' ], 20 );
+            } else {
+                add_action( 'template_redirect', [ $this, '_body' ], 20 );
+            }
         } else {
             add_action( 'template_redirect', [ $this, '_body' ], 20 );
         }
