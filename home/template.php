@@ -1,5 +1,5 @@
 <?php
-$content = get_option('phantom_site_content');
+$content = get_option( 'phantom_site_content' );
 ?>
 <script>
     document.body.id = 'top'
@@ -26,7 +26,7 @@ $content = get_option('phantom_site_content');
                 <li><a class="smoothscroll" href="#about" title="about">About</a></li>
                 <li><a class="smoothscroll" href="#values" title="our-plan">Values</a></li>
                 <li><a class="smoothscroll" href="#contact" title="contact">Start today!</a></li>
-                <?php if( $content['sample_section'] ?? 'yes' === 'yes' ) : ?>
+                <?php if ( $content['sample_section'] ?? 'yes' === 'yes' ) : ?>
                     <li><a class="smoothscroll" href="#works" title="works">Samples</a></li>
                 <?php endif; ?>
 
@@ -40,19 +40,19 @@ $content = get_option('phantom_site_content');
                 with other people from <?php echo esc_html( $content['location'] ?? '' ) ?>. See math become a reality in your day to day life.
             </p>
             <ul class="header-nav__social">
-                <?php if( ! empty( $content['facebook_url'] ?? '') ) : ?>
+                <?php if ( ! empty( $content['facebook_url'] ?? '' ) ) : ?>
                     <li>
-                        <a href="<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-facebook"></i></a>
+                        <a href="<?php echo esc_html( $content['facebook_url'] ?? '' ); ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-facebook"></i></a>
                     </li>
                 <?php endif; ?>
-                <?php if( ! empty( $content['twitter_url'] ?? '') ) : ?>
+                <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
                     <li>
-                        <a href="<?php echo esc_html( $content['twitter_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-twitter"></i></a>
+                        <a href="<?php echo esc_html( $content['twitter_url'] ?? '' ); ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-twitter"></i></a>
                     </li>
                 <?php endif; ?>
-                <?php if( ! empty( $content['instagram_url'] ?? '') ) : ?>
+                <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
                     <li>
-                        <a href="<?php echo esc_html( $content['instagram_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="<?php echo esc_html( $content['instagram_url'] ?? '' ); ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-instagram"></i></a>
                     </li>
                 <?php endif; ?>
             </ul>
@@ -113,21 +113,21 @@ $content = get_option('phantom_site_content');
                 <span class="home-social-text">Email Math Classes</span>
             </a>
         </li>
-        <?php if( ! empty( $content['facebook_url'] ?? '') ) : ?>
+        <?php if ( ! empty( $content['facebook_url'] ?? '' ) ) : ?>
         <li><a href="<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-facebook"></i>
                 <span class="home-social-text">Facebook</span>
             </a>
         </li>
         <?php endif; ?>
-        <?php if( ! empty( $content['twitter_url'] ?? '') ) : ?>
+        <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
         <li><a href="<?php echo esc_html( $content['twitter_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-twitter"></i>
                 <span class="home-social-text">Twitter</span>
             </a>
         </li>
         <?php endif; ?>
-        <?php if( ! empty( $content['instagram_url'] ?? '') ) : ?>
+        <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
         <li><a href="<?php echo esc_html( $content['instagram_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener">
                 <i class="fab fa-instagram"></i>
                 <span class="home-social-text">Instagram</span>
@@ -194,13 +194,13 @@ $content = get_option('phantom_site_content');
 
                     <p>
                         Get daily math motivation by following us on social media. Join our community of math enthusiasts.
-                        <?php if( ! empty( $content['facebook_url'] ?? '') ) : ?>
+                        <?php if ( ! empty( $content['facebook_url'] ?? '' ) ) : ?>
                         <a href="<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener">Facebook</a>
                         <?php endif; ?>
-                        <?php if( ! empty( $content['twitter_url'] ?? '') ) : ?>
+                        <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
                         , <a href="<?php echo esc_html( $content['twitter_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener">Twitter</a>
                         <?php endif; ?>
-                        <?php if( ! empty( $content['instagram_url'] ?? '') ) : ?>
+                        <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
                           , and <a href="<?php echo esc_html( $content['instagram_url'] ?? '' ) ?>" target="_blank" rel="noreferrer noopener">Instagram</a>
                         <?php endif; ?>
 
@@ -402,8 +402,8 @@ $content = get_option('phantom_site_content');
             <h3 class="subhead subhead--light">Join Us</h3>
             <h1 class="display-1 display-1--light">Sign up for our<br>Math Classes by Email</h1>
 
-            <?php if( isset( $content['contact_form'] ) && ! empty( $content['contact_form'] ) ) : ?>
-                <?php echo $content['contact_form']; ?>
+            <?php if ( isset( $content['contact_form'] ) && ! empty( $content['contact_form'] ) ) : ?>
+                <?php echo esc_html( $content['contact_form'] ); ?>
             <?php else : ?>
                 <form id="newsletter-form" action="">
                     <div id="section-name" class="section">
@@ -441,13 +441,13 @@ $content = get_option('phantom_site_content');
         <div class="col-full">
             <h1 class="display-1 display-1--light">Follow <?php echo esc_html( $content['title'] ?? 'us' ); ?> on Social Media</h1>
             <p>
-                <?php if( ! empty( $content['facebook_url'] ?? '') ) : ?>
+                <?php if ( ! empty( $content['facebook_url'] ?? '' ) ) : ?>
                 <button type="button" onclick="location.href = '<?php echo esc_html( $content['facebook_url'] ?? '' ) ?>'"><i class="fab fa-facebook"></i> Facebook</button>
                 <?php endif; ?>
-                <?php if( ! empty( $content['twitter_url'] ?? '') ) : ?>
+                <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
                 <button type="button" onclick="location.href = '<?php echo esc_html( $content['twitter_url'] ?? '' ) ?>'"><i class="fab fa-twitter"></i> Twitter</button>
                 <?php endif; ?>
-                <?php if( ! empty( $content['instagram_url'] ?? '') ) : ?>
+                <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
                 <button type="button" onclick="location.href = '<?php echo esc_html( $content['instagram_url'] ?? '' ) ?>'"><i class="fab fa-instagram"></i> Instagram</button>
                 <?php endif; ?>
 
@@ -747,7 +747,7 @@ $content = get_option('phantom_site_content');
     }
 </style>
 
-<?php if( $content['sample_section'] ?? 'yes' === 'yes' ) : ?>
+<?php if ( $content['sample_section'] ?? 'yes' === 'yes' ) : ?>
 <!-- works
 ================================================== -->
 <section id="works" class="s-works">
@@ -766,8 +766,8 @@ $content = get_option('phantom_site_content');
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-dmm1.jpg" class="thumb-link" title="Movement" data-size="800x800">
-                            <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/dmm1.jpg" srcset="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/dmm1.jpg 1x, <?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-dmm1.jpg 2x" alt="">
+                        <a href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-dmm1.jpg" class="thumb-link" title="Movement" data-size="800x800">
+                            <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/dmm1.jpg" srcset="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/dmm1.jpg 1x, <?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-dmm1.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -795,8 +795,8 @@ $content = get_option('phantom_site_content');
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-math.jpg" class="thumb-link" title="Math" data-size="800x800">
-                            <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/math.jpg" srcset="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/math.jpg 1x, <?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-math.jpg 2x" alt="">
+                        <a href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-math.jpg" class="thumb-link" title="Math" data-size="800x800">
+                            <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/math.jpg" srcset="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/math.jpg 1x, <?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-math.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -824,8 +824,8 @@ $content = get_option('phantom_site_content');
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-quote1.jpg" class="thumb-link" title="Woodcraft" data-size="800x800">
-                            <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/quote1.jpg" srcset="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/quote1.jpg 1x, <?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-quote1.jpg 2x" alt="">
+                        <a href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-quote1.jpg" class="thumb-link" title="Woodcraft" data-size="800x800">
+                            <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/quote1.jpg" srcset="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/quote1.jpg 1x, <?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-quote1.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -853,8 +853,8 @@ $content = get_option('phantom_site_content');
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-scripture.jpg" class="thumb-link" title="Liberty" data-size="800x800">
-                            <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/scripture1.jpg" srcset="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/scripture1.jpg 1x, <?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-scripture.jpg 2x" alt="">
+                        <a href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-scripture.jpg" class="thumb-link" title="Liberty" data-size="800x800">
+                            <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/scripture1.jpg" srcset="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/scripture1.jpg 1x, <?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-scripture.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -883,8 +883,8 @@ $content = get_option('phantom_site_content');
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-quote4.jpg" class="thumb-link" title="Fuji" data-size="800x800">
-                            <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/quote4.jpg" srcset="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/quote4.jpg 1x, <?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-quote4.jpg 2x" alt="">
+                        <a href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-quote4.jpg" class="thumb-link" title="Fuji" data-size="800x800">
+                            <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/quote4.jpg" srcset="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/quote4.jpg 1x, <?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-quote4.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -912,8 +912,8 @@ $content = get_option('phantom_site_content');
                 <div class="item-folio">
 
                     <div class="item-folio__thumb">
-                        <a href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-quote3.jpg" class="thumb-link" title="" data-size="800x800">
-                            <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/quote3.jpg" srcset="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/quote3.jpg 1x, <?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/g-quote3.jpg 2x" alt="">
+                        <a href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-quote3.jpg" class="thumb-link" title="" data-size="800x800">
+                            <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/quote3.jpg" srcset="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/quote3.jpg 1x, <?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/g-quote3.jpg 2x" alt="">
                         </a>
                     </div>
 
@@ -953,7 +953,7 @@ $content = get_option('phantom_site_content');
             <div class="col-full testimonials__slider">
 
                 <div class="testimonials__slide">
-                    <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/user-02.jpg" alt="Author image" class="testimonials__avatar">
+                    <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/user-02.jpg" alt="Author image" class="testimonials__avatar">
                     <p>I thought I wasn't smart enough to study math, until I learned about <?php echo esc_html( $content['title'] ?? 'this class' ) ?></p>
                     <div class="testimonials__author">
                         Hakim ~
@@ -962,7 +962,7 @@ $content = get_option('phantom_site_content');
                 </div> <!-- end testimonials__slide -->
 
                 <div class="testimonials__slide">
-                    <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/user-01.jpg" alt="Author image" class="testimonials__avatar">
+                    <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/user-01.jpg" alt="Author image" class="testimonials__avatar">
                     <p>You can also learn math in <?php echo esc_html( $content['location'] ?? 'your city' ) ?>! This class helped me find a good job and get things in order.</p>
                     <div class="testimonials__author">
                         Jamal ~
@@ -971,7 +971,7 @@ $content = get_option('phantom_site_content');
                 </div> <!-- end testimonials__slide -->
 
                 <div class="testimonials__slide">
-                    <img src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/user-03.jpg" alt="Author image" class="testimonials__avatar">
+                    <img src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/user-03.jpg" alt="Author image" class="testimonials__avatar">
                     <p>Advanced mathematical concepts were finally easy for me to understand, and even more, I was applying them to my every day life!</p>
                     <div class="testimonials__author">
                         Ahmed ~
@@ -1062,7 +1062,7 @@ Copyright ©<script>document.write(new Date().getFullYear());</script> All right
 
 <!-- Java Script
 ================================================== -->
-<script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/jquery-3.2.1.min.js"></script>
-<script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/plugins.js"></script>
-<script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/main.js"></script>
+<script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/jquery-3.2.1.min.js"></script>
+<script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/plugins.js"></script>
+<script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/main.js"></script>
 <?php exit; ?>

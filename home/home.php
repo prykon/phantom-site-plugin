@@ -1,78 +1,77 @@
 <?php
 class Phantom_Site_Plugin_Home {
-	public $root = 'phantom';
-	private static $_instance = null;
+    public $root = 'phantom';
+    private static $_instance = null;
 
-	/**
-	 * Phantom_Site_Plugin_Menu Instance
-	 * 
-	 * Ensures only one instance of Phantom_Site_Plugin_Menu is loaded or can be loaded.
-	 * 
-	 * @since 0.1.0
-	 * @static
-	 * @return Phantom_Site_Plugin_Menu instance
-	 */
-	 public static function instance() {
-	 	if ( is_null( self::$_instance ) ) {
-	 		self::$_instance = new self();
-	 	}
-	 	return self::$_instance;
-	 } // End instance()
+    /**
+    * Phantom_Site_Plugin_Menu Instance
+    *
+    * Ensures only one instance of Phantom_Site_Plugin_Menu is loaded or can be loaded.
+    *
+    * @since 0.1.0
+    * @static
+    * @return Phantom_Site_Plugin_Menu instance
+    */
+    public static function instance() {
+        if ( is_null( self::$_instance ) ) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    } // End instance()
 
-	 /**
-	  * Constructor function
-	  * @access public
-	  * @since 0.1.0
-	  */
-	  public function __construct() {
-	  	if ( is_admin() ) {
-	  		return;
-	  	}
+    /**
+    * Constructor function
+    * @access public
+    * @since 0.1.0
+    */
+    public function __construct() {
+        if ( is_admin() ) {
+            return;
+        }
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
-	  	
+
         if ( $_POST['callback_phone'] ) {
-        	add_action( 'template_redirect', [ $this, '_body_thanks'], 20 );
+            add_action( 'template_redirect', [ $this, '_body_thanks' ], 20 );
         } else {
-	  		add_action( 'template_redirect', [ $this, '_body' ], 20 );
+            add_action( 'template_redirect', [ $this, '_body' ], 20 );
         }
 
-	  	// load page elements
-	  	add_action( 'wp_print_scripts', [ $this, '_print_scripts' ], 100 );
-	  	add_action( 'wp_print_styles', [ $this, '_print_styles' ], 100);
-	  } // End construct()	
+        // load page elements
+        add_action( 'wp_print_scripts', [ $this, '_print_scripts' ], 100 );
+        add_action( 'wp_print_styles', [ $this, '_print_styles' ], 100 );
+    } // End construct()
 
-	  public function _print_scripts() {
-	  	$allowed_js = apply_filters( 'phantom_site_allowed_js', [ 'jquery' ] );
+    public function _print_scripts() {
+        $allowed_js = apply_filters( 'phantom_site_allowed_js', [ 'jquery' ] );
+        global $wp_scripts;
 
-	  	global $wp_scripts;
+        if ( isset( $wp_scripts ) ) {
+            foreach ( $wp_scripts->queue as $key => $item) {
+                if ( ! in_array( $item, $allowed_js ) ) {
+                    unset( $wp_scripts->queue[$key] );
+                }
+            }
+        }
+    }
 
-	  	if ( isset( $wp_scripts ) ) {
-	  		foreach ( $wp_scripts->queue as $key => $item) {
-	  			if ( ! in_array( $item, $allowed_js ) ) {
-	  				unset( $wp_scripts->queue[$key] );
-	  			}
-	  		}
-	  	}
-	  }
+    public function _print_styles() {
+        $allowed_css = apply_filters( 'phantom_site_allowed_css', [
+            'foundation-css',
+            'jquery-ui-site-css',
+        ] );
 
-	  public function _print_styles() {
-	  	$allowed_css = apply_filters( 'phantom_site_allowed_css', [
-	  		'foundation-css',
-	  		'jquery-ui-site-css',
-	  	] );
+        global $wp_styles;
+        if ( isset( $wp_styles ) ) {
+            foreach ( $wp_styles->queue as $key => $item ) {
+                if ( ! in_array( $item, $allowed_css ) ) {
+                    unset( $wp_styles->queue[$key] );
+                }
+            }
+        }
+    }
 
-	  	global $wp_styles;
-	  	if ( isset( $wp_styles) ) {
-	  		foreach ( $wp_styles->queue as $key => $item ) {
-	  			if ( ! in_array( $item, $allowed_css ) ) {
-	  				unset( $wp_styles->queue[$key] );
-	  			}
-	  		}
-	  	}
-	  }
-
-	  public function _head(){
-	  	$content = get_option('phantom_site_content');
+    public function _head() {
+        $content = get_option( 'phantom_site_content' );
         ?>
         <!--- basic page needs
         ================================================== -->
@@ -89,19 +88,19 @@ class Phantom_Site_Plugin_Home {
 
         <!-- CSS
         ================================================== -->
-        <link rel="stylesheet" href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>css/base.css">
-        <link rel="stylesheet" href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>css/vendor.css">
-        <link rel="stylesheet" href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>css/main.css">
+        <link rel="stylesheet" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>css/base.css">
+        <link rel="stylesheet" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>css/vendor.css">
+        <link rel="stylesheet" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>css/main.css">
 
         <!-- script
         ================================================== -->
-        <script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/modernizr.js"></script>
-        <script src="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>js/pace.min.js"></script>
+        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/modernizr.js"></script>
+        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/pace.min.js"></script>
 
         <!-- favicons
         ================================================== -->
-        <link rel="shortcut icon" href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>favicon.png" type="image/x-icon">
-        <link rel="icon" href="<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>favicon.png" type="image/x-icon">
+        <link rel="icon" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>favicon.png" type="image/x-icon">
 
         <style>
             .header-logo {
@@ -123,7 +122,7 @@ class Phantom_Site_Plugin_Home {
                 border: none;
                 -webkit-transition: all .3s ease-in-out;
                 transition: all .3s ease-in-out;
-                background-image: url(<?php echo trailingslashit( plugin_dir_url(__FILE__) ) ?>images/p4m-logo.png);
+                background-image: url(<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/p4m-logo.png);
                 background-repeat: no-repeat;
                 background-size: 50px;
                 background-position: left center;
@@ -143,30 +142,30 @@ class Phantom_Site_Plugin_Home {
         wp_head();
     }
 
-	  public function _body() {
-	  	require_once( 'template.php' );
-	  	exit;
-	  }
+    public function _body() {
+        require_once( 'template.php' );
+        exit;
+    }
 
-	  public function _body_thanks() {
-	  	require_once( 'template-thanks.php' );
-	  	exit;
-	  }
+    public function _body_thanks() {
+        require_once( 'template-thanks.php' );
+        exit;
+    }
 
-	  private function validate_phone( int $phone ) {
-	  	$phone = esc_sql( trim( $phone ) );
-	  	$phantom_workers = get_option( 'phantom_workers' );
-	  	if ( ! empty( $phantom_workers ) && in_array( $phone, $phantom_workers ) ) {
-	  		self::show_magic_link();
-	  	} else {
-	  		self::_head();
-	  		self::thanks_body();
-	  	}
-	  }
+    private function validate_phone( int $phone ) {
+        $phone = esc_sql( trim( $phone ) );
+        $phantom_workers = get_option( 'phantom_workers' );
+        if ( ! empty( $phantom_workers ) && in_array( $phone, $phantom_workers ) ) {
+            self::show_magic_link();
+        } else {
+            self::_head();
+            self::thanks_body();
+        }
+    }
 
-	  private function show_magic_link() {
-	  	?> <h1>Do stuff...</h1> <?php
-	  	exit;
-	  }
+    private function show_magic_link() {
+        ?> <h1>Do stuff...</h1> <?php
+        exit;
+    }
 }
 Phantom_Site_Plugin_Home::instance();
