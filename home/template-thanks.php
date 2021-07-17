@@ -1,7 +1,10 @@
 <?php
     $content = get_option( 'phantom_site_content' );
 
-if ( isset( $_POST['callback_phone'] ) ) {
+if ( isset( $_POST['callback_phone'] ) && isset( $_POST['phantom_site_phone_nonce'] ) ) {
+    if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['phantom_site_phone_nonce'] ) ), 'phantom_site_callback_phone' ) ) {
+        return;
+    }
     $phone = esc_sql( trim( $phone ) );
     $phantom_workers = get_option( 'phantom_workers' );
 
@@ -44,9 +47,9 @@ if ( isset( $_POST['callback_phone'] ) ) {
 
             <!-- Java Script
             ================================================== -->
-            <script src="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) ?>js/jquery-3.2.1.min.js"></script>
-            <script src="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) ?>js/plugins.js"></script>
-            <script src="<?php echo trailingslashit( plugin_dir_url( __FILE__ ) ) ?>js/main.js"></script>
+            <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/jquery-3.2.1.min.js"></script>
+            <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/plugins.js"></script>
+            <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/main.js"></script>
         <?php
     } else {
         ?>
