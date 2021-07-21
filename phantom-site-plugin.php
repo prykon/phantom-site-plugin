@@ -94,6 +94,184 @@ class Phantom_Site_Plugin {
         require_once( 'home/home.php' );
         require_once( 'admin/admin.php' );
         $this->i18n();
+        $this->check_manifest();
+    }
+
+    // //@todo make this work
+        // if ( strpos( __FILE__, 'serviceworker.js' ) !== false ){
+        //     add_action( 'wp_head', 'Service-Worker-Allowed' );
+        // }
+    
+    public function add_js_header() {
+        //$headers['content-type'] = 'application/x-javascript';
+        header( 'content-type: application/x-javascript', true );
+    }
+
+    /**
+     * Checks to see if manifest.json is being requested and returns it
+     * @since 0.1.0
+     * @access public
+     * @return manifest.json 
+     */
+    public function check_manifest() {
+        if ( strpos( $_SERVER['REQUEST_URI'], 'manifest.json') !== false ) {
+            add_action('send_headers', 'add_js_header');
+            $this->display_manifest();
+            die();
+        }
+
+        if ( strpos( $_SERVER['REQUEST_URI'], 'phantom-app.js') ) {
+            add_action('send_headers', 'add_js_header');
+            $this->display_phantom_app();
+            die();
+        }
+
+        if ( strpos( $_SERVER['REQUEST_URI'], 'serviceworker.js' ) ) {
+            add_action('send_headers', 'add_js_header');
+            $this->display_serviceworker();
+            die();
+        }
+    }
+
+    public function display_manifest() {
+        $path = self::get_plugin_base_url();
+        header('Content-Type: application/x-javascript');
+        $output = [];
+        $output['short_name'] = 'Math Class';
+        $output['name'] = 'We provide high quality education. For free.';
+        $output['icons'];
+        $output['icons'][0]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/p4m-logo-192.png';
+        $output['icons'][0]['type'] = 'image/png';
+        $output['icons'][0]['sizes'] = '192x192';
+        $output['icons'][1]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/p4m-logo-512.png';
+        $output['icons'][1]['type'] = 'image/png';
+        $output['icons'][1]['sizes'] = '512x512';
+        $output['icons'][2]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/favicon.png';
+        $output['icons'][2]['type'] = 'image/png';
+        $output['icons'][2]['sizes'] = '920x920';
+        $output['icons'][2]['purpose'] = 'any maskable';
+        $output['start_url'] = $path;
+        $output['background_color'] = '#26BFB5';
+        $output['display'] = 'standalone';
+        $output['orientation'] = 'portrait';
+        $output['scope'] = $path;
+        $output['theme_color'] = '#26BFB5';
+        $output['description'] = 'Free math classes';
+        echo json_encode( $output );
+    }
+
+    private function get_plugin_base_url() {
+        $plugin_base_url = untrailingslashit( plugin_dir_url( __FILE__ ) );
+        $plugin_base_url = explode( '/', $plugin_base_url );
+        array_pop( $plugin_base_url );
+        array_pop( $plugin_base_url );
+        array_pop( $plugin_base_url );
+        $plugin_base_url = implode( '/', $plugin_base_url );
+        return trailingslashit( $plugin_base_url );
+    }
+
+    public function display_phantom_app() {
+        $path = trailingslashit( self::get_plugin_base_url() );
+        header('content-type: application/x-javascript');
+        ?>
+        // Ensure that the browser supports the service worker API
+        if (navigator.serviceWorker) {
+        // Start registration process on every page load
+        window.addEventListener('load', () => {
+            navigator.serviceWorker
+                // The register function takes as argument
+                // the file path to the worker's file
+                .register('<?php echo $path; ?>serviceworker.js')
+                // Gives us registration object
+                .then(reg => console.log('Service Worker Registered'))
+                .catch(swErr => console.log(
+                        `Service Worker Installation Error: ${swErr}}`));
+            });
+
+            window.addEventListener('beforeinstallprompt', (event) => {
+              console.log('👍', 'beforeinstallprompt', event);
+              // Stash the event so it can be triggered later.
+              window.deferredPrompt = event;
+              // Remove the 'hidden' class from the install button container
+              divInstall.classList.toggle('hidden', false);
+            });
+        }
+    <?php
+    }
+
+    public function display_serviceworker() {
+        $path = self::get_plugin_base_url();
+        header('content-type: application/x-javascript');
+        ?>
+        var cacheName = 'math-class-cache';
+        var cacheAssets = [
+          '<?php echo esc_attr( trailingslashit( $path ) ); ?>wp-content/plugins/phantom-site-plugin/home/images/g-quote1.jpg',
+          '<?php echo esc_attr( trailingslashit( $path ) ); ?>wp-content/plugins/phantom-site-plugin/home/images/g-quote2.jpg',
+          '<?php echo esc_attr( trailingslashit( $path ) ); ?>wp-content/plugins/phantom-site-plugin/home/images/g-quote3.jpg',
+          '/'
+        ];
+
+        // Call install Event
+        self.addEventListener('install', e => {
+          // Wait until promise is finished
+          e.waitUntil(
+            caches.open(cacheName)
+            .then(cache => {
+              console.log(`Service Worker: Caching Files: ${cache}`);
+              cache.addAll(cacheAssets)
+                // When everything is set
+                .then(() => self.skipWaiting())
+            })
+          );
+        })
+
+        // Call Activate Event
+        self.addEventListener('activate', e => {
+          console.log('Service Worker: Activated');
+          // Clean up old caches by looping through all of the
+          // caches and deleting any old caches or caches that
+          // are not defined in the list
+          e.waitUntil(
+            caches.keys().then(cacheNames => {
+              return Promise.all(
+                cacheNames.map(
+                  cache => {
+                    if (cache !== cacheName) {
+                      console.log('Service Worker: Clearing Old Cache');
+                      return caches.delete(cache);
+                    }
+                  }
+                )
+              )
+            })
+          );
+        })
+
+        // Call Fetch Event
+        self.addEventListener('fetch', e => {
+          console.log('Service Worker: Fetching');
+          e.respondWith(
+            fetch(e.request)
+            .then(res => {
+              // The response is a stream and in order the browser
+              // to consume the response and in the same time the
+              // cache consuming the response it needs to be
+              // cloned in order to have two streams.
+              const resClone = res.clone();
+              // Open cache
+              caches.open(cacheName)
+                .then(cache => {
+                  // Add response to cache
+                  cache.put(e.request, resClone);
+                });
+              return res;
+            }).catch(
+              err => caches.match(e.request)
+              .then(res => res)
+            )
+          );
+        });
+        <?php
     }
 
     /**

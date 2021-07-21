@@ -28,6 +28,7 @@ class Phantom_Site_Plugin_Home {
         if ( is_admin() ) {
             return;
         }
+
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
 
         if ( isset( $_POST['callback_phone'] ) && isset( $_POST['phantom_site_phone_nonce'] ) ) {
@@ -76,6 +77,8 @@ class Phantom_Site_Plugin_Home {
 
     public function _head() {
         $content = get_option( 'phantom_site_content' );
+        $base_url = trailingslashit( $_SERVER['REQUEST_URI'] );
+        $plugin_base_url = $base_url . 'wp-content/plugins/phantom-site-plugin/';
         ?>
         <!--- basic page needs
         ================================================== -->
@@ -85,27 +88,32 @@ class Phantom_Site_Plugin_Home {
         <meta name="description" content="<?php echo esc_html( $content['description'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
+        <meta name="theme-color" content="#26BFB5">
+        <link rel="canonical" href="<?php echo esc_attr( $base_url ); ?>">
 
         <!-- mobile specific metas
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="/wp-content/plugins/phantom-site-plugin/home/favicon.png">
+        <link rel="manifest" href="<?php echo esc_attr( $base_url ); ?>manifest.json">
 
         <!-- CSS
         ================================================== -->
-        <link rel="stylesheet" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>css/base.css">
-        <link rel="stylesheet" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>css/vendor.css">
-        <link rel="stylesheet" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>css/main.css">
+        <link rel="stylesheet" href="<?php echo esc_attr( $plugin_base_url ); ?>home/css/base.css">
+        <link rel="stylesheet" href="<?php echo esc_attr( $plugin_base_url ); ?>home/css/vendor.css">
+        <link rel="stylesheet" href="<?php echo esc_attr( $plugin_base_url ); ?>home/css/main.css">
 
         <!-- script
         ================================================== -->
-        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/modernizr.js"></script>
-        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/pace.min.js"></script>
+        <script src="<?php echo esc_attr( $plugin_base_url ); ?>home/js/modernizr.js"></script>
+        <script src="<?php echo esc_attr( $plugin_base_url ); ?>home/js/pace.min.js"></script>
+        <script src="<?php echo esc_attr( $base_url ); ?>phantom-app.js"></script>
 
         <!-- favicons
         ================================================== -->
-        <link rel="shortcut icon" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>favicon.png" type="image/x-icon">
-        <link rel="icon" href="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>favicon.png" type="image/x-icon">
-
+        <link rel="shortcut icon" href="<?php echo esc_attr( $plugin_base_url ); ?>home/favicon.png" type="image/x-icon">
+        <link rel="icon" href="<?php echo esc_attr( $plugin_base_url ); ?>favicon.png" type="image/x-icon">
+        
         <style>
             .header-logo {
                 z-index: 501;
@@ -126,7 +134,7 @@ class Phantom_Site_Plugin_Home {
                 border: none;
                 -webkit-transition: all .3s ease-in-out;
                 transition: all .3s ease-in-out;
-                background-image: url(<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>images/p4m-logo.png);
+                background-image: url(<?php echo esc_attr( $plugin_base_url ); ?>images/p4m-logo.png);
                 background-repeat: no-repeat;
                 background-size: 50px;
                 background-position: left center;
