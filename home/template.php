@@ -839,7 +839,7 @@ $content = get_option( 'phantom_site_content' );
                         </p>
                     </div>
 
-                    <a href="https://www.behance.net/" class="item-folio__project-link" title="Project link">
+                    <a href="#" class="item-folio__project-link" title="Project link">
                         Link
                     </a>
 

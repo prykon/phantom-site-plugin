@@ -83,18 +83,37 @@ class Phantom_Site_Plugin_Home {
         <!--- basic page needs
         ================================================== -->
         <meta charset="utf-8">
-        <title><?php echo esc_html( $content['title'] ?? '' ) ?></title>
+        <title><?php echo esc_html( $content['title'] ?? 'App 1.0' ) ?></title>
         <meta name="robots" content="noindex, nofollow">
         <meta name="description" content="<?php echo esc_html( $content['description'] ?? '' ) ?>">
-        <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
-        <meta name="author" content="<?php echo esc_html( $content['title'] ?? '' ) ?>">
+        <meta name="author" content="<?php echo esc_html( $content['title'] ?? 'App 1.0' ) ?>">
+        <meta name="author" content="<?php echo esc_html( $content['title'] ?? 'App 1.0' ) ?>">
         <meta name="theme-color" content="#26BFB5">
         <link rel="canonical" href="<?php echo esc_attr( $base_url ); ?>">
+        
+        <!--- apple pwa specific metas
+        ================================================== -->
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-touch-fullscreen" content="yes" />
+        <meta name="apple-mobile-web-app-title" content="<?php echo esc_html( $content['title'] ?? 'App 1.0' ); ?>" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="apple-touch-icon" href="<?php echo esc_attr( $plugin_base_url ); ?>home/favicon_square.png">
+        
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-828x1792.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-1242x2688.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-1125x2436.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-1242x2208.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-750x1334.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-2048x2732.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-1668x2224.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-640x1136.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-1668x2388.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( $plugin_base_url ); ?>home/images/apple-splash-1536x2048.png" />
 
         <!-- mobile specific metas
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="apple-touch-icon" href="/wp-content/plugins/phantom-site-plugin/home/favicon.png">
         <link rel="manifest" href="<?php echo esc_attr( $base_url ); ?>manifest.json">
 
         <!-- CSS
@@ -111,8 +130,7 @@ class Phantom_Site_Plugin_Home {
 
         <!-- favicons
         ================================================== -->
-        <link rel="shortcut icon" href="<?php echo esc_attr( $plugin_base_url ); ?>home/favicon.png" type="image/x-icon">
-        <link rel="icon" href="<?php echo esc_attr( $plugin_base_url ); ?>favicon.png" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo esc_attr( $plugin_base_url ); ?>home/favicon_square.png" type="image/x-icon">
         
         <style>
             .header-logo {

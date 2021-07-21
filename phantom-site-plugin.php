@@ -140,16 +140,28 @@ class Phantom_Site_Plugin {
         $output['short_name'] = 'Math Class';
         $output['name'] = 'We provide high quality education. For free.';
         $output['icons'];
-        $output['icons'][0]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/p4m-logo-192.png';
+        $output['icons'][0]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/logo-512.png';
         $output['icons'][0]['type'] = 'image/png';
-        $output['icons'][0]['sizes'] = '192x192';
-        $output['icons'][1]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/p4m-logo-512.png';
+        $output['icons'][0]['sizes'] = '512x512';
+        $output['icons'][1]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/logo-192.png';
         $output['icons'][1]['type'] = 'image/png';
-        $output['icons'][1]['sizes'] = '512x512';
-        $output['icons'][2]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/favicon.png';
+        $output['icons'][1]['sizes'] = '192x192';
+        $output['icons'][2]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/logo-180.png';
         $output['icons'][2]['type'] = 'image/png';
-        $output['icons'][2]['sizes'] = '920x920';
-        $output['icons'][2]['purpose'] = 'any maskable';
+        $output['icons'][2]['sizes'] = '180x180';
+        $output['icons'][3]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/logo-120.png';
+        $output['icons'][3]['type'] = 'image/png';
+        $output['icons'][3]['sizes'] = '120x120';
+        $output['icons'][4]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/logo-60.png';
+        $output['icons'][4]['type'] = 'image/png';
+        $output['icons'][4]['sizes'] = '60x60';
+        $output['icons'][5]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/images/logo-30.png';
+        $output['icons'][5]['type'] = 'image/png';
+        $output['icons'][5]['sizes'] = '30x30';
+        $output['icons'][6]['src'] = trailingslashit( plugin_dir_url( __FILE__ ) ) . 'home/favicon_square.png';
+        $output['icons'][6]['type'] = 'image/png';
+        $output['icons'][6]['sizes'] = '920x920';
+        $output['icons'][6]['purpose'] = 'any maskable';
         $output['start_url'] = $path;
         $output['background_color'] = '#26BFB5';
         $output['display'] = 'standalone';
@@ -208,6 +220,7 @@ class Phantom_Site_Plugin {
           '<?php echo esc_attr( trailingslashit( $path ) ); ?>wp-content/plugins/phantom-site-plugin/home/images/g-quote1.jpg',
           '<?php echo esc_attr( trailingslashit( $path ) ); ?>wp-content/plugins/phantom-site-plugin/home/images/g-quote2.jpg',
           '<?php echo esc_attr( trailingslashit( $path ) ); ?>wp-content/plugins/phantom-site-plugin/home/images/g-quote3.jpg',
+          '<?php echo esc_attr( trailingslashit( $path ) ); ?>'wp-content/plugins/phantom-site-plugin/home/images/apple-splash-2048-2732.png',
           '/'
         ];
 
