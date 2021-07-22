@@ -30,16 +30,7 @@ class Phantom_Site_Plugin_Home {
         }
 
         add_action( 'template_redirect', [ $this, '_head' ], 10 );
-
-        if ( isset( $_POST['callback_phone'] ) && isset( $_POST['phantom_site_phone_nonce'] ) ) {
-            if ( wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['phantom_site_phone_nonce'] ) ), 'phantom_site_callback_phone' ) ) {
-                add_action( 'template_redirect', [ $this, '_body_thanks' ], 20 );
-            } else {
-                add_action( 'template_redirect', [ $this, '_body' ], 20 );
-            }
-        } else {
-            add_action( 'template_redirect', [ $this, '_body' ], 20 );
-        }
+        add_action( 'template_redirect', [ $this, '_body' ], 20 );
 
         // load page elements
         add_action( 'wp_print_scripts', [ $this, '_print_scripts' ], 100 );
@@ -76,9 +67,14 @@ class Phantom_Site_Plugin_Home {
     }
 
     public function _head() {
+        if ( ! isset( $_SERVER['REQUEST_URI'] ) ) {
+            return;
+        }
+
         $content = get_option( 'phantom_site_content' );
-        $base_url = trailingslashit( $_SERVER['REQUEST_URI'] );
+        $base_url = trailingslashit( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
         $plugin_base_url = $base_url . 'wp-content/plugins/phantom-site-plugin/';
+
         ?>
         <!--- basic page needs
         ================================================== -->
@@ -174,11 +170,6 @@ class Phantom_Site_Plugin_Home {
 
     public function _body() {
         require_once( 'template.php' );
-        exit;
-    }
-
-    public function _body_thanks() {
-        require_once( 'template-thanks.php' );
         exit;
     }
 

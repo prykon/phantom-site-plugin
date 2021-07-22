@@ -471,7 +471,6 @@ $content = get_option( 'phantom_site_content' );
                 </div>
 
                 <div id="section-phone" class="section">
-                    <?php wp_nonce_field( 'phantom_site_callback_phone', 'phantom_site_phone_nonce' ); ?>
                     <label for="phone" class="input-label">Phone *
                     <input type="tel" id="contact-phone" name="callback_phone" class="input-text input-phone" value="" required="required" ></label>
                     <span id="contact-phone-error" class="form-error">You're phone is required.</span>
