@@ -91,51 +91,50 @@ class Phantom_Site_Plugin {
     } // End instance()
 
     private function __construct() {
+        $this->check_script_url();
+        $this->i18n();
         require_once( 'home/home.php' );
         require_once( 'admin/admin.php' );
-        $this->i18n();
-        $this->check_manifest();
-    }
-
-    // //@todo make this work
-        // if ( strpos( __FILE__, 'serviceworker.js' ) !== false ){
-        //     add_action( 'wp_head', 'Service-Worker-Allowed' );
-        // }
-    
-    public function add_js_header() {
-        //$headers['content-type'] = 'application/x-javascript';
-        header( 'content-type: application/x-javascript', true );
     }
 
     /**
      * Checks to see if manifest.json is being requested and returns it
      * @since 0.1.0
      * @access public
-     * @return manifest.json 
+     * @return manifest.json
      */
-    public function check_manifest() {
-        if ( strpos( $_SERVER['REQUEST_URI'], 'manifest.json') !== false ) {
-            add_action('send_headers', 'add_js_header');
+    public function check_script_url() {
+        if ( ! isset( $_SERVER['REQUEST_URI'] ) ) {
+            return;
+        }
+
+        $path = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
+
+
+        if ( preg_match( '/manifest\.json$/', $path ) ) {
             $this->display_manifest();
             die();
         }
 
-        if ( strpos( $_SERVER['REQUEST_URI'], 'phantom-app.js') ) {
-            add_action('send_headers', 'add_js_header');
+        else if ( preg_match( '/phantom-app\.js$/', $path ) ) {
             $this->display_phantom_app();
             die();
         }
 
-        if ( strpos( $_SERVER['REQUEST_URI'], 'serviceworker.js' ) ) {
-            add_action('send_headers', 'add_js_header');
+        else if ( preg_match( '/serviceworker\.js$/', $path ) ) {
             $this->display_serviceworker();
+            die();
+        }
+
+        else if ( $path !== '/' ) {
+            http_response_code( 404 );
             die();
         }
     }
 
     public function display_manifest() {
         $path = self::get_plugin_base_url();
-        header('Content-Type: application/x-javascript');
+        header( 'Content-Type: application/x-javascript' );
         $output = [];
         $output['short_name'] = 'Math Class';
         $output['name'] = 'We provide high quality education. For free.';
@@ -184,7 +183,7 @@ class Phantom_Site_Plugin {
 
     public function display_phantom_app() {
         $path = trailingslashit( self::get_plugin_base_url() );
-        header('content-type: application/x-javascript');
+        header( 'content-type: application/x-javascript' );
         ?>
         // Ensure that the browser supports the service worker API
         if (navigator.serviceWorker) {
@@ -193,7 +192,7 @@ class Phantom_Site_Plugin {
             navigator.serviceWorker
                 // The register function takes as argument
                 // the file path to the worker's file
-                .register('<?php echo $path; ?>serviceworker.js')
+                .register('<?php echo esc_attr( $path ); ?>serviceworker.js')
                 // Gives us registration object
                 .then(reg => console.log('Service Worker Registered'))
                 .catch(swErr => console.log(
@@ -208,12 +207,12 @@ class Phantom_Site_Plugin {
               divInstall.classList.toggle('hidden', false);
             });
         }
-    <?php
+        <?php
     }
 
     public function display_serviceworker() {
         $path = self::get_plugin_base_url();
-        header('content-type: application/x-javascript');
+        header( 'content-type: application/x-javascript' );
         ?>
         var cacheName = 'math-class-cache';
         var cacheAssets = [
