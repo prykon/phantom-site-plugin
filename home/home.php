@@ -36,6 +36,9 @@ class Phantom_Site_Plugin_Home {
      * @since 0.1.0
      */
     public function display_body() {
+        if ( ! isset( $_SERVER['REQUEST_URI'] ) ) {
+            return;
+        }
         $base_url = trailingslashit( sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) );
         require_once( 'template.php' );
         exit;

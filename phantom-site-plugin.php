@@ -135,7 +135,7 @@ class Phantom_Site_Plugin {
 
     /**
      * Display the PWA manifest.json
-     * @since 0.1.0 
+     * @since 0.1.0
      * @access private
      */
     private function display_manifest() {
@@ -179,7 +179,7 @@ class Phantom_Site_Plugin {
 
     /**
      * Display the PWA phantom-app.js
-     * @since 0.1.0 
+     * @since 0.1.0
      * @access private
      */
     private function display_phantom_app() {
@@ -213,7 +213,7 @@ class Phantom_Site_Plugin {
 
     /**
      * Display the PWA serviceworker.js
-     * @since 0.1.0 
+     * @since 0.1.0
      * @access private
      */
     private function display_serviceworker() {
