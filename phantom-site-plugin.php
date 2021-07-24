@@ -9,7 +9,6 @@
  Author URI: https://github.com/prykon
  Github Plugin URI: https://github.com/prykon/phantom-site-plugin
  */
-
 if ( ! defined( 'ABSPATH' ) ) {
     exit; //Exit if accessed directly
 }
@@ -62,7 +61,7 @@ if ( ! function_exists( 'phantom_site_plugin_dt_existence_notice' ) ) {
     }
 }
 
- add_action( 'after_setup_theme', 'phantom_site_plugin' );
+add_action( 'after_setup_theme', 'phantom_site_plugin' );
 
  /**
   *
@@ -76,7 +75,6 @@ class Phantom_Site_Plugin {
 
     /**
      * Phantom_Site_Plugin_Menu Instance
-     *
      * Ensures only one instance of Phantom_Site_Plugin_Menu is loaded or can be loaded.
      *
      * @since 0.1.0
@@ -90,6 +88,11 @@ class Phantom_Site_Plugin {
         return self::$_instance;
     } // End instance()
 
+    /**
+    * Constructor function
+    * @access private
+    * @since 0.1.0
+    */
     private function __construct() {
         $this->check_script_url();
         $this->i18n();
@@ -98,10 +101,9 @@ class Phantom_Site_Plugin {
     }
 
     /**
-     * Checks to see if manifest.json is being requested and returns it
+     * Checks what script url is requested and returns it
      * @since 0.1.0
      * @access public
-     * @return manifest.json
      */
     public function check_script_url() {
         if ( ! isset( $_SERVER['REQUEST_URI'] ) ) {
@@ -109,7 +111,6 @@ class Phantom_Site_Plugin {
         }
 
         $path = sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) );
-
 
         if ( preg_match( '/manifest\.json$/', $path ) ) {
             $this->display_manifest();
@@ -132,8 +133,13 @@ class Phantom_Site_Plugin {
         }
     }
 
-    public function display_manifest() {
-        $path = plugin_dir_url( __FILE__ );
+    /**
+     * Display the PWA manifest.json
+     * @since 0.1.0 
+     * @access private
+     */
+    private function display_manifest() {
+        $path = esc_attr( plugin_dir_url( __FILE__ ) );
         header( 'Content-Type: application/x-javascript' );
         $output = [];
         $output['short_name'] = 'Math Class';
@@ -171,8 +177,13 @@ class Phantom_Site_Plugin {
         echo json_encode( $output );
     }
 
-    public function display_phantom_app() {
-        $path = plugin_dir_url( __FILE__ );
+    /**
+     * Display the PWA phantom-app.js
+     * @since 0.1.0 
+     * @access private
+     */
+    private function display_phantom_app() {
+        $path = esc_attr( plugin_dir_url( __FILE__ ) );
         header( 'content-type: application/x-javascript' );
         ?>
         // Ensure that the browser supports the service worker API
@@ -200,8 +211,13 @@ class Phantom_Site_Plugin {
         <?php
     }
 
-    public function display_serviceworker() {
-        $path = plugin_dir_url( __FILE__ );
+    /**
+     * Display the PWA serviceworker.js
+     * @since 0.1.0 
+     * @access private
+     */
+    private function display_serviceworker() {
+        $path = esc_attr( plugin_dir_url( __FILE__ ) );
         header( 'content-type: application/x-javascript' );
         ?>
         var cacheName = 'math-class-cache';

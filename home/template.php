@@ -59,45 +59,7 @@ wp_enqueue_script( 'phantom_app_js', plugin_dir_url( __FILE__ ) . 'js/phantom-ap
         <link rel="shortcut icon" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>favicon_square.png" type="image/x-icon">
     </head>
     <body id="top">
-        <style>
-            .header-logo {
-                z-index: 501;
-                display: inline-block;
-                margin: 0;
-                padding: 0;
-                position: absolute;
-                left: 110px;
-                top: 50%;
-                -webkit-transform: translateY(-50%);
-                -ms-transform: translateY(-50%);
-                transform: translateY(-50%);
-            }
-            .header-logo a {
-                display: block;
-                padding: 0;
-                outline: 0;
-                border: none;
-                -webkit-transition: all .3s ease-in-out;
-                transition: all .3s ease-in-out;
-                background-image: url(<?php echo esc_attr( $plugin_base_url ); ?>images/p4m-logo.png);
-                background-repeat: no-repeat;
-                background-size: 50px;
-                background-position: left center;
-                padding-left: 60px;
-                font-size: 3em;
-                font-weight: 900;
-                color: #fff;
-                font-family: 'times new roman';
-            }
-            @media only screen and (max-width: 1000px) {
-                .header-logo a {
-                    font-size: 1em;
-                }
-            }
-        </style>
-        <script>
-            document.body.id = 'top'
-        </script>
+        <script> document.body.id = 'top';</script>
         <!-- header
         ================================================== -->
         <header class="s-header">
@@ -115,9 +77,6 @@ wp_enqueue_script( 'phantom_app_js', plugin_dir_url( __FILE__ ) . 'js/phantom-ap
                         <li><a class="smoothscroll" href="#about" title="about">About</a></li>
                         <li><a class="smoothscroll" href="#values" title="our-plan">Values</a></li>
                         <li><a class="smoothscroll" href="#contact" title="contact">Start today!</a></li>
-                        <?php if ( $content['sample_section'] ?? 'yes' === 'yes' ) : ?>
-                            <li><a class="smoothscroll" href="#works" title="works">Samples</a></li>
-                        <?php endif; ?>
                     </ul>
                     <p>
                         <?php echo esc_html( $content['title'] ?? '' ) ?> is an 100% free math teaching network for anyone that wants to take their knowledge to another level.
@@ -129,26 +88,18 @@ wp_enqueue_script( 'phantom_app_js', plugin_dir_url( __FILE__ ) . 'js/phantom-ap
                             <li>
                                 <a href="<?php echo esc_html( $content['facebook_url'] ?? '' ); ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-facebook"></i></a>
                             </li>
-                        <?php endif; ?>
-                        <?php if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
+                        <?php endif;
+                        if ( ! empty( $content['twitter_url'] ?? '' ) ) : ?>
                             <li>
                                 <a href="<?php echo esc_html( $content['twitter_url'] ?? '' ); ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-twitter"></i></a>
                             </li>
-                        <?php endif; ?>
-                        <?php if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
+                        <?php endif;
+                        if ( ! empty( $content['instagram_url'] ?? '' ) ) : ?>
                             <li>
                                 <a href="<?php echo esc_html( $content['instagram_url'] ?? '' ); ?>" target="_blank" rel="noreferrer noopener"><i class="fab fa-instagram"></i></a>
                             </li>
                         <?php endif; ?>
                     </ul>
-                    <p>
-                        <a class="" href="/login" title="login" style="display: block;
-                            color: #ffffff;
-                            position: relative;
-                            font-size: 1.6rem;">
-                            Login
-                        </a>
-                    </p>
                 </div> <!-- end header-nav__content -->
             </nav>
             <a class="header-menu-toggle" href="#0">
