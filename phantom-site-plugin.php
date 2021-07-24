@@ -116,7 +116,7 @@ class Phantom_Site_Plugin {
             die();
         }
 
-        else if ( preg_match( '/phantom-app\.js$/', $path ) ) {
+        else if ( preg_match( '/phantom-app\.js$/', $path ) || preg_match( '/phantom-app\.js\S+=.+?$/', $path ) ) {
             $this->display_phantom_app();
             die();
         }
@@ -133,7 +133,7 @@ class Phantom_Site_Plugin {
     }
 
     public function display_manifest() {
-        $path = self::get_plugin_base_url();
+        $path = plugin_dir_url( __FILE__ );
         header( 'Content-Type: application/x-javascript' );
         $output = [];
         $output['short_name'] = 'Math Class';
@@ -171,18 +171,8 @@ class Phantom_Site_Plugin {
         echo json_encode( $output );
     }
 
-    private function get_plugin_base_url() {
-        $plugin_base_url = untrailingslashit( plugin_dir_url( __FILE__ ) );
-        $plugin_base_url = explode( '/', $plugin_base_url );
-        array_pop( $plugin_base_url );
-        array_pop( $plugin_base_url );
-        array_pop( $plugin_base_url );
-        $plugin_base_url = implode( '/', $plugin_base_url );
-        return trailingslashit( $plugin_base_url );
-    }
-
     public function display_phantom_app() {
-        $path = trailingslashit( self::get_plugin_base_url() );
+        $path = plugin_dir_url( __FILE__ );
         header( 'content-type: application/x-javascript' );
         ?>
         // Ensure that the browser supports the service worker API
@@ -211,7 +201,7 @@ class Phantom_Site_Plugin {
     }
 
     public function display_serviceworker() {
-        $path = self::get_plugin_base_url();
+        $path = plugin_dir_url( __FILE__ );
         header( 'content-type: application/x-javascript' );
         ?>
         var cacheName = 'math-class-cache';

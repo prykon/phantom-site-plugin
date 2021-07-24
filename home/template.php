@@ -1,8 +1,18 @@
 <?php
 $content = get_option( 'phantom_site_content' );
+
+wp_enqueue_style( 'base_css', plugin_dir_url( __FILE__ ) . 'css/base.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/base.css' ), false );
+wp_enqueue_style( 'vendor_css', plugin_dir_url( __FILE__ ) . 'css/vendor.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/vendor.css' ), false );
+wp_enqueue_style( 'main_css', plugin_dir_url( __FILE__ ) . 'css/main.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/main.css' ), false );
+wp_enqueue_script( 'jquery', plugin_dir_url( __FILE__ ) . 'js/jquery-3.2.1.min.js', array(), filemtime( plugin_dir_path( __FILE__ ) . 'js/jquery-3.2.1.min.js' ), false );
+wp_enqueue_script( 'plugins_js', plugin_dir_url( __FILE__ ) . 'js/plugins.js', array(), filemtime( plugin_dir_path( __FILE__ ) . 'js/plugins.js' ), true );
+wp_enqueue_script( 'main_js', plugin_dir_url( __FILE__ ) . 'js/main.js', array(), filemtime( plugin_dir_path( __FILE__ ) . 'js/main.js' ), true );
+wp_enqueue_script( 'modernizr_js', plugin_dir_url( __FILE__ ) . 'js/modernizr.js', array(), filemtime( plugin_dir_path( __FILE__ ) . 'js/modernizr.js' ), true );
+wp_enqueue_script( 'pace_min_js', plugin_dir_url( __FILE__ ) . 'js/pace.min.js', array(), filemtime( plugin_dir_path( __FILE__ ) . 'js/pace.min.js' ), true );
+wp_enqueue_script( 'phantom_app_js', plugin_dir_url( __FILE__ ) . 'js/phantom-app.js', array(), gmdate( 'YmW' ), true );
 ?>
 <!doctype html>
-  <html class="no-js">
+  <html class="no-js" lang="en">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,43 +26,39 @@ $content = get_option( 'phantom_site_content' );
         <meta name="author" content="<?php echo esc_html( $content['title'] ?? 'App 1.0' ) ?>">
         <meta name="theme-color" content="#26BFB5">
         <link rel="canonical" href="<?php echo esc_attr( $base_url ); ?>">
-        
+
+        <!-- styles
+        ================================================== -->
+        <?php print_late_styles(); ?>
+
         <!--- apple pwa specific metas
         ================================================== -->
         <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-touch-fullscreen" content="yes" />
-        <meta name="apple-mobile-web-app-title" content="<?php echo esc_html( $content['title'] ?? 'App 1.0' ); ?>" />
+        <meta name="apple-mobile-web-app-title" content="<?php echo esc_attr( $content['title'] ?? 'App 1.0' ); ?>" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <link rel="apple-touch-icon" href="<?php echo plugin_dir_url( __FILE__ ); ?>favicon_square.png">
+        <link rel="apple-touch-icon" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>favicon_square.png">
         
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-828x1792.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-1242x2688.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-1125x2436.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-1242x2208.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-750x1334.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-2048x2732.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-1668x2224.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-640x1136.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-1668x2388.png" />
-        <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo plugin_dir_url( __FILE__ ); ?>images/apple-splash-1536x2048.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-828x1792.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-1242x2688.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-1125x2436.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-1242x2208.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-750x1334.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-2048x2732.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-1668x2224.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-640x1136.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-1668x2388.png" />
+        <link rel="apple-touch-startup-image" media="screen and (device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>images/apple-splash-1536x2048.png" />
         <!-- mobile specific metas
         ================================================== -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="manifest" href="<?php echo esc_attr( $base_url ); ?>manifest.json">
-        <!-- CSS
-        ================================================== -->
-        <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ); ?>css/base.css">
-        <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ); ?>css/vendor.css">
-        <link rel="stylesheet" href="<?php echo plugin_dir_url( __FILE__ ); ?>css/main.css">
-        <!-- script
-        ================================================== -->
-        <script src="<?php echo plugin_dir_url( __FILE__ ); ?>js/modernizr.js"></script>
-        <script src="<?php echo plugin_dir_url( __FILE__ ); ?>js/pace.min.js"></script>
-        <script src="<?php echo esc_attr( $base_url ); ?>phantom-app.js"></script>
         <!-- favicons
         ================================================== -->
-        <link rel="shortcut icon" href="<?php echo esc_attr( $plugin_base_url ); ?>home/favicon_square.png" type="image/x-icon">
+        <link rel="shortcut icon" href="<?php echo esc_attr( plugin_dir_url( __FILE__ ) ); ?>favicon_square.png" type="image/x-icon">
+    </head>
+    <body id="top">
         <style>
             .header-logo {
                 z-index: 501;
@@ -977,13 +983,11 @@ $content = get_option( 'phantom_site_content' );
             </div>
         </div>
         <!-- /wp:html -->
-        <!-- Java Script
-        ================================================== -->
-        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/jquery-3.2.1.min.js"></script>
-        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/plugins.js"></script>
-        <script src="<?php echo esc_attr( trailingslashit( plugin_dir_url( __FILE__ ) ) ); ?>js/main.js"></script>
         </div>  <!-- end .off-canvas-content -->
-                </div> <!-- end .off-canvas-wrapper -->
-            </body>
+            </div> <!-- end .off-canvas-wrapper -->
+        <!-- scripts
+        ================================================== -->    
+        <?php print_footer_scripts(); ?>
+        </body>
         </html> <!-- end page -->
         <?php exit; ?>
