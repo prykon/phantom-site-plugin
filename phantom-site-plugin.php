@@ -127,6 +127,10 @@ class Phantom_Site_Plugin {
             die();
         }
 
+        else if (preg_match( '/wp-admin.*?/', $path ) ) {
+            return;
+        }
+
         else if ( $path !== '/' ) {
             http_response_code( 404 );
             die();

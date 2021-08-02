@@ -1,6 +1,5 @@
 <?php
 $content = get_option( 'phantom_site_content' );
-
 wp_enqueue_style( 'base_css', plugin_dir_url( __FILE__ ) . 'css/base.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/base.css' ), false );
 wp_enqueue_style( 'vendor_css', plugin_dir_url( __FILE__ ) . 'css/vendor.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/vendor.css' ), false );
 wp_enqueue_style( 'main_css', plugin_dir_url( __FILE__ ) . 'css/main.css', array(), filemtime( plugin_dir_path( __FILE__ ) . 'css/main.css' ), false );
@@ -60,14 +59,12 @@ wp_enqueue_script( 'phantom_app_js', plugin_dir_url( __FILE__ ) . 'js/phantom-ap
     </head>
     <body id="top">
         <script> document.body.id = 'top';</script>
-        <!-- header
-        ================================================== -->
         <header class="s-header">
             <div class="header-logo">
                 <a class="site-logo" href="/">
                     <?php echo esc_html( $content['title'] ?? '' ) ?>
                 </a>
-            </div> <!-- end header-logo -->
+            </div>
             <nav class="header-nav">
                 <a href="#0" class="header-nav__close" title="close"><span>Close</span></a>
                 <div class="header-nav__content">
@@ -100,14 +97,12 @@ wp_enqueue_script( 'phantom_app_js', plugin_dir_url( __FILE__ ) . 'js/phantom-ap
                             </li>
                         <?php endif; ?>
                     </ul>
-                </div> <!-- end header-nav__content -->
+                </div>
             </nav>
             <a class="header-menu-toggle" href="#0">
                 <span class="header-menu-icon"></span>
             </a>
-        </header> <!-- end s-header -->
-        <!-- home
-        ================================================== -->
+        </header>
         <section id="home" class="s-home target-section" data-parallax="scroll" data-image-src="<?php echo esc_html( $content['background_image_url'] ?? '' ) ?>" data-natural-width="3000" data-natural-height="2000" data-position-y="top">
             <div class="shadow-overlay"></div>
             <div class="home-content">
